@@ -1,0 +1,1 @@
+CMakeLists.txt not found in /home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules Select CMakeLists.txt

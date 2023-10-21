@@ -1,0 +1,6 @@
+# ninja log v5
+1	164	1697907636476179865	CMakeFiles/Schedules.dir/Code/Class.cpp.o	c5aa57c76d060df4
+0	210	1697907636520180610	CMakeFiles/Schedules.dir/main.cpp.o	6a09fe7c16d3421d
+1	226	1697907636536180881	CMakeFiles/Schedules.dir/Code/Student.cpp.o	1a412eec476eb64d
+1	232	1697907636544181017	CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o	45be4d09a6ef14ce
+233	285	1697907636596181897	Schedules	2e8f8073ac31322
