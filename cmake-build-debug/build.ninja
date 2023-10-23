@@ -73,6 +73,12 @@ build CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o: CXX_COMPILER__Schedules_unsc
   OBJECT_DIR = CMakeFiles/Schedules.dir
   OBJECT_FILE_DIR = CMakeFiles/Schedules.dir/Code
 
+build CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o: CXX_COMPILER__Schedules_unscanned_Debug /home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Code/Parse_Files.cpp || cmake_object_order_depends_target_Schedules
+  DEP_FILE = CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/Schedules.dir
+  OBJECT_FILE_DIR = CMakeFiles/Schedules.dir/Code
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Schedules
@@ -81,7 +87,7 @@ build CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o: CXX_COMPILER__Schedules_unsc
 #############################################
 # Link the executable Schedules
 
-build Schedules: CXX_EXECUTABLE_LINKER__Schedules_Debug CMakeFiles/Schedules.dir/main.cpp.o CMakeFiles/Schedules.dir/Code/Class.cpp.o CMakeFiles/Schedules.dir/Code/Student.cpp.o CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o
+build Schedules: CXX_EXECUTABLE_LINKER__Schedules_Debug CMakeFiles/Schedules.dir/main.cpp.o CMakeFiles/Schedules.dir/Code/Class.cpp.o CMakeFiles/Schedules.dir/Code/Student.cpp.o CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Schedules.dir
   POST_BUILD = :

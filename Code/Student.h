@@ -1,31 +1,26 @@
-//
-// Created by afonso on 17-10-2023.
-//
-
 #ifndef UNTITLED_STUDENT_H
 #define UNTITLED_STUDENT_H
 #include <string>
 #include <vector>
-#include "Class.h"
+#include "Uc_class.h"
 using namespace std;
 
 class Student {
     private:
         string studentCode;
         string studentName;
-        vector<Class> schedule;
+        vector<Uc_class> schedule;
 
     public:
-        Student();
         Student(string studentCode,string studentName);
 
         void set_studentCode(string studentCode);
         void set_studentName(string studentName);
-        void set_studentClass(string ucCode, string classCode);
+        void set_schedule(vector<Uc_class> schedule); //VER COMO DAR SET//
 
         string get_studentCode() const;
         string get_studentName() const;
-        vector<Class> get_studentSchedule() const;
+        vector<Uc_class> get_schedule() const;
 
         bool operator < (const Student& other) const{
             return (this->studentName < other.get_studentName());

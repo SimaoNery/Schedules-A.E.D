@@ -1,7 +1,3 @@
-//
-// Created by afonso on 17-10-2023.
-//
-
 #ifndef UNTITLED_CLASS_H
 #define UNTITLED_CLASS_H
 #include <string>

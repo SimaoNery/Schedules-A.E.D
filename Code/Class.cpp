@@ -1,7 +1,3 @@
-//
-// Created by afonso on 17-10-2023.
-//
-
 #include "Class.h"
 
 Class::Class(string classCode, string ucCode) {

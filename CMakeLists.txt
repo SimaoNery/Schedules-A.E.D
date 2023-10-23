@@ -10,4 +10,5 @@ add_executable(Schedules main.cpp
         Code/Student.h
         Code/Uc_class.cpp
         Code/Uc_class.h
+        Code/Parse_Files.cpp
 )
