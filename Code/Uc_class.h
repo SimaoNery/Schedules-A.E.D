@@ -6,19 +6,20 @@
 using namespace std;
 
 class Uc_class {
-    private:
-        string classCode;
-        list<Class> schedule;
+private:
+    string ucCode;
+    string classCode;
+    list<Class> schedule;
 
-    public:
-        Uc_class(){}
-        Uc_class(string classCode, list<Class> schedule);
+public:
+    Uc_class(){}
+    Uc_class(string ucCode, string classCode);
 
-        void set_classCode(string classCode);
-        void set_schedule(list<Class> schedule);
+    void set_schedule(list<Class> schedule);
 
-        list<Class> get_schedule() const;
-        string get_classCode() const;
+    string get_ucCode() const;
+    string get_classCode() const;
+    list<Class> get_schedule() const;
 };
 
 
