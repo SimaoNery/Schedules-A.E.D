@@ -21,5 +21,9 @@ public:
     vector<Class> get_classes();
     vector<Uc_class> get_ucs();
     vector<Student> get_students();
+
+    bool find_UC(const string& ucCode);
+    bool find_student(const string& studentCode);
+    bool find_student_UC(const string& studentCode, const string& ucCode);
 };
 #endif //SCHEDULES_PARSE_FILES_H

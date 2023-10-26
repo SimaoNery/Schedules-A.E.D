@@ -9,9 +9,10 @@ class Student {
     private:
         string studentCode;
         string studentName;
-        vector<Uc_class> schedule;
 
     public:
+        vector<Uc_class> schedule;
+
         Student(){}
         Student(string studentCode,string studentName);
 
@@ -20,6 +21,8 @@ class Student {
         string get_studentCode() const;
         string get_studentName() const;
         vector<Uc_class> get_studentSchedule() const;
+
+        bool find_student(vector<Student> students);
 
         bool operator < (const Student& other) const{
             return (this->studentName < other.get_studentName());

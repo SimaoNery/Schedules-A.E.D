@@ -108,7 +108,7 @@ void Parse_Files::Parse_Students() {
             //StudentName
             getline(iss,aux2,',');
             //new student
-            Student student2 = Student(aux,aux2);
+            student = Student(aux,aux2);
             //UcCode and ClassCode
             getline(iss,aux,',');
             getline(iss,aux2,'\n');
@@ -146,4 +146,37 @@ vector<Uc_class> Parse_Files::get_ucs(){
 
 vector<Student> Parse_Files::get_students(){
     return students;
+}
+
+bool Parse_Files::find_student(const string& studentCode) {
+    for(const Student &student : students) {
+        if(student.get_studentCode() == studentCode) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Parse_Files::find_UC(const string& ucCode) {
+    for(const Uc_class &ucClass : ucs) {
+        if(ucClass.get_ucCode() == ucCode) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//Ainda não funciona!!!!
+bool Parse_Files::find_student_UC(const string& studentCode, const string& ucCode) {
+    for(const Student& student : students) {
+        if(student.get_studentCode() == studentCode) {
+            vector<Uc_class> ucClasses = student.get_studentSchedule();
+            for(const Uc_class& uc : ucClasses) {
+                if(uc.get_ucCode() == ucCode) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
