@@ -5,25 +5,19 @@
 #include "Uc_class.h"
 #include "Student.h"
 #include <string>
+#include <set>
 using namespace std;
 
 class Parse_Files {
 private:
-    vector<Class> classes;
-    vector<Uc_class> ucs;
-    vector<Student> students;
+    list<Uc_class> Uc_classes;
+    set<Student> Students;
 
 public:
     void Parse_Classes();
-    void Parse_UC_Classes();
     void Parse_Students();
 
-    vector<Class> get_classes();
-    vector<Uc_class> get_ucs();
-    vector<Student> get_students();
-
-    bool find_UC(const string& ucCode);
-    bool find_student(const string& studentCode);
-    bool find_student_UC(const string& studentCode, const string& ucCode);
+    list<Uc_class> get_Uc_classses();
+    set<Student> get_Students();
 };
 #endif //SCHEDULES_PARSE_FILES_H

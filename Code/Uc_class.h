@@ -12,14 +12,25 @@ private:
     list<Class> schedule;
 
 public:
-    Uc_class(){}
-    Uc_class(string ucCode, string classCode);
-
-    void set_schedule(list<Class> schedule);
+    Uc_class(string ucCode, string classCode, list<Class> schedule);
 
     string get_ucCode() const;
     string get_classCode() const;
     list<Class> get_schedule() const;
+
+    void set_schedule(list<Class>schedule);
+    void set_classCode(string classCode);
+    void set_ucCode(string icCode);
+
+    friend std::ostream& operator<<(std::ostream& os, const Uc_class& uc) {
+        os << "Uc_code: " << uc.get_ucCode() << "; ";
+        os << "Class_code: " << uc.get_classCode() << "; ";
+        os << "Schedule: ";
+        for (const Class &c: uc.get_schedule()) {
+            os << c << " ";
+        }
+        return os;
+    }
 };
 
 

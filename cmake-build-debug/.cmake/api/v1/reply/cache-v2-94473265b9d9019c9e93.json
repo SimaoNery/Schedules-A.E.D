@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/cmake-build-debug"
+			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule"
+			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/cmake-build-debug"
+			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules/cmake-build-debug"
 		},
 		{
 			"name" : "untitled_IS_TOP_LEVEL",
@@ -1171,7 +1171,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule"
+			"value" : "/home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules"
 		}
 	],
 	"kind" : "cache",

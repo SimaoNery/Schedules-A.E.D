@@ -3,180 +3,122 @@
 #include <sstream>
 #include "Parse_Files.h"
 
-void Parse_Files::Parse_Classes() {
+//list with call uc classes("turmas de cada Uc")
+void Parse_Files::Parse_Classes(){
     ifstream file("../Information/classes.csv");
-    if(!file.is_open()) {
-        cerr << "Couldn´t open the file" << endl;
-        return;
+    if(!file.is_open()){ //Check if we can open the file
+        cout << "Impossible to open the file!" << endl;
     }
-    //ignore first line
-    string line;
-    getline(file,line);
 
-    //next lines
-    while(getline(file,line)) {
+    string line; getline(file, line); //Ignore the first line
+
+    string lastUc; //Will be necessary to compare Uc codes
+
+    //Loop through all lines and creates a class('aula')
+    while(getline(file, line)){
+
         istringstream iss(line);
-        string aux, aux2;
-        double startHour, duration;
-        Class clas;
-        //new class to add in vector classes
-        if((getline(iss,aux,',')) && (getline(file,aux2,','))) {
-            clas = Class(aux, aux2);
-        }
-        if(getline(iss,aux,',')) {
-            clas.set_weekday(aux);
-        }
-        if(getline(iss,aux,',')) {
-            startHour = stod(aux);          //stod converts string to double
-            clas.set_startHour(startHour);
-        }
-        if(getline(iss,aux,',')) {
-            duration = stod(aux);           //stod converts string to double
-            clas.set_duration(duration);
-        }
-        if(getline(iss,aux,'\n')) {
-            clas.set_type(aux);
-        }
-        classes.push_back(clas);
-    }
-    file.close();
-}
 
-void Parse_Files::Parse_UC_Classes() {
-    ifstream file("../Information/classes_per_uc.csv");
-    if(!file.is_open()) {
-        cerr << "Couldn´t open the file" << endl;
-        return;
-    }
-    //ignore first line
-    string line;
-    getline(file,line);
-    //next lines
-    while(getline(file,line)) {
-        istringstream iss(line);
-        string aux, aux2;
-        //new uc to add in ucs vector
-        Uc_class uc;
-        if((getline(iss,aux,',')) && (getline(iss,aux2,'\n'))) {
-            uc = Uc_class(aux,aux2);
+        string Ccode, Ucode, Wday, Type,Shour, Dur;
+
+        getline(iss, Ccode, ',');
+        getline(iss, Ucode, ',');
+        getline(iss, Wday, ',');
+        getline(iss, Shour, ',');
+        getline(iss, Dur, ',');
+        getline(iss, Type, '\r');
+
+        double hour = stod(Shour); //converter strings para integer
+        double duration = stod(Dur); //converter strings para integer
+
+        Class aula(Wday, Type, hour, duration);
+
+        //If we encounter a new Uc, we create a new Uc_class "turma"
+        if(Ucode != lastUc){
+            list<Class> schedule;
+            schedule.push_back(aula);
+            Uc_class turma(Ucode, Ccode, schedule);
+            Uc_classes.push_back(turma);
         }
-        ucs.push_back(uc);
-    }
-    file.close();
-}
-
-void Parse_Files::Parse_Students() {
-    string aux, aux2;
-    vector<Uc_class> schedule;
-    ifstream file("../Information/students_classes.csv");
-    if(!file.is_open()) {
-        cerr << "couldn´t open the file" << endl;
-        return;
-    }
-
-    //ignore first line
-    string line;
-    getline(file,line);
-
-    //second line
-    getline(file, line);
-    istringstream iss(line);
-    //StudentCode and StudentName
-    getline(iss,aux,',');
-    getline(iss,aux2,',');
-    //new student
-    Student student = Student(aux,aux2);
-    //UcCode and ClassCode
-    getline(iss,aux,',');
-    getline(iss,aux2,'\n');
-    Uc_class uc = Uc_class(aux,aux2);
-    schedule.push_back(uc);
-
-    //next lines
-    while(getline(file,line)) {
-        istringstream iss2(line);
-        //StudentCode
-        getline(iss2,aux,',');
-        //different student
-        if(aux != student.get_studentCode()){
-            //set schedule for the previous student
-            student.set_studentSchedule(schedule);
-            //previous student to add in students vector
-            students.push_back(student);
-            //free schedule memory
-            schedule.clear();
-            //StudentName
-            getline(iss,aux2,',');
-            //new student
-            student = Student(aux,aux2);
-            //UcCode and ClassCode
-            getline(iss,aux,',');
-            getline(iss,aux2,'\n');
-            uc = Uc_class(aux,aux2);
-            //add UC to new student schedule
-            schedule.push_back(uc);
-        }
-            //same student
+            //Otherwise we search in Uc_classes for the same class in the same Uc and add a new class to the schedule if it is already there
         else{
-            //ignore StudentName
-            getline(iss,aux,',');
-            //UcCode and ClassCode
-            getline(iss,aux,',');
-            getline(iss,aux2,'\n');
-            uc = Uc_class(aux,aux2);
-            //add UC to student schedule
-            schedule.push_back(uc);
-            //check if the actual line is the last line of the file
-            if(file.eof()){
-                student.set_studentSchedule(schedule);
-                students.push_back(student);
+            bool existing_class = false;
+            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end(); itr++){
+                if(Ccode == itr->get_classCode() && Ucode == itr->get_ucCode()){
+                    auto new_schedule = itr->get_schedule();
+                    new_schedule.push_back(aula);
+                    itr->set_schedule(new_schedule);
+                    existing_class = true;
+                }
+            }
+            //If there isn't the same class for this Uc in the Uc_classes list we create a new class and add it to the list
+            if(existing_class != true){
+                list<Class> schedule;
+                schedule.push_back(aula);
+                Uc_class turma(Ucode, Ccode, schedule);
+                Uc_classes.push_back(turma);
             }
         }
+        lastUc = Ucode;
     }
-    file.close();
+    //cout << "Uc_classes size: " << Uc_classes.size() << endl;-->Testing
 }
 
-vector<Class> Parse_Files::get_classes(){
-    return classes;
-}
-
-vector<Uc_class> Parse_Files::get_ucs(){
-    return ucs;
-}
-
-vector<Student> Parse_Files::get_students(){
-    return students;
-}
-
-bool Parse_Files::find_student(const string& studentCode) {
-    for(const Student &student : students) {
-        if(student.get_studentCode() == studentCode) {
-            return true;
-        }
+//set with all students and their information
+void Parse_Files::Parse_Students() {
+    ifstream file("../Information/students_classes.csv");
+    if(!file.is_open()){ //Check if we can open the file
+        cout << "Impossible to open the file!" << endl;
     }
-    return false;
-}
 
-bool Parse_Files::find_UC(const string& ucCode) {
-    for(const Uc_class &ucClass : ucs) {
-        if(ucClass.get_ucCode() == ucCode) {
-            return true;
-        }
-    }
-    return false;
-}
+    string line; getline(file, line); //Ignore the first line
 
-//Ainda não funciona!!!!
-bool Parse_Files::find_student_UC(const string& studentCode, const string& ucCode) {
-    for(const Student& student : students) {
-        if(student.get_studentCode() == studentCode) {
-            vector<Uc_class> ucClasses = student.get_studentSchedule();
-            for(const Uc_class& uc : ucClasses) {
-                if(uc.get_ucCode() == ucCode) {
-                    return true;
+    int first = 0;//Will be used to check if we are looping for the first time
+    Student atual("","");//Student that is being treated
+
+    while(getline(file, line)){
+
+        istringstream iss(line);
+
+        string Scode, Sname, Ucode, Ccode;
+
+        getline(iss, Scode, ',');
+        getline(iss, Sname, ',');
+        getline(iss, Ucode, ',');
+        getline(iss, Ccode, '\r');
+
+        if(Scode != atual.get_studentCode()){//If the student changes we need to create a new one
+
+            if(first != 0) {//If we are looping for the first time we need to change the "atual" so that is represents a student correctly, so we jump the insert
+
+                Students.insert(atual);//Insert the student being treated so that we can treat a new one(since once a student changes, it won't appear again)
+
+            }
+            atual = Student(Scode, Sname);
+            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end();itr++){
+                if(Ucode == itr->get_ucCode() && Ccode == itr->get_classCode()){
+
+                    atual.update_studentSchedule(*itr); //Iterate through Uc_classes so that we can create the student schedule
+
                 }
             }
         }
+        else{//Otherwise we just change the one already being treated
+            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end();itr++){
+                if(Ucode == itr->get_ucCode() && Ccode == itr->get_classCode()){
+                    atual.update_studentSchedule(*itr);
+                }
+            }
+        }
+        first = 1;//To inform that we have looped at least once
     }
-    return false;
+    //cout << "Students size: " << Students.size() << endl;-->Testing
+}
+
+
+list<Uc_class> Parse_Files::get_Uc_classses(){
+    return Uc_classes;
+}
+set<Student> Parse_Files::get_Students(){
+    return Students;
 }

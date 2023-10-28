@@ -1,4 +1,4 @@
-#ifndef UNTITLED_REQUEST_H
+/*#ifndef UNTITLED_REQUEST_H
 #define UNTITLED_REQUEST_H
 #include <iostream>
 #include "Parse_Files.h"
@@ -12,3 +12,4 @@ class Request {
 
 
 #endif //UNTITLED_REQUEST_H
+*/

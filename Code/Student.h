@@ -9,24 +9,21 @@ class Student {
     private:
         string studentCode;
         string studentName;
+        list<Uc_class> schedule;
 
     public:
-        vector<Uc_class> schedule;
-
-        Student(){}
         Student(string studentCode,string studentName);
 
-        void set_studentSchedule(vector<Uc_class> schedule); //VER COMO DAR SET//
+        void update_studentSchedule(Uc_class schedule);
 
         string get_studentCode() const;
         string get_studentName() const;
-        vector<Uc_class> get_studentSchedule() const;
+        list<Uc_class> get_studentSchedule() const;
 
-        bool find_student(vector<Student> students);
 
-        bool operator < (const Student& other) const{
-            return (this->studentName < other.get_studentName());
-        }
+       bool operator < (const Student& other) const{
+            return (this->studentCode < other.get_studentCode());
+       }
 };
 
 
