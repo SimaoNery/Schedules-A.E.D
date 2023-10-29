@@ -20,7 +20,6 @@ class Student {
         string get_studentName() const;
         list<Uc_class> get_studentSchedule() const;
 
-
        bool operator < (const Student& other) const{
             return (this->studentCode < other.get_studentCode());
        }

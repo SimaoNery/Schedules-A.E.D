@@ -40,7 +40,7 @@ void Parse_Files::Parse_Classes(){
             Uc_class turma(Ucode, Ccode, schedule);
             Uc_classes.push_back(turma);
         }
-            //Otherwise we search in Uc_classes for the same class in the same Uc and add a new class to the schedule if it is already there
+        //Otherwise we search in Uc_classes for the same class in the same Uc and add a new class to the schedule if it is already there, or create a new class if it doesn't
         else{
             bool existing_class = false;
             for(auto itr = Uc_classes.begin(); itr != Uc_classes.end(); itr++){
@@ -116,7 +116,7 @@ void Parse_Files::Parse_Students() {
 }
 
 
-list<Uc_class> Parse_Files::get_Uc_classses(){
+vector<Uc_class> Parse_Files::get_Uc_classses(){
     return Uc_classes;
 }
 set<Student> Parse_Files::get_Students(){

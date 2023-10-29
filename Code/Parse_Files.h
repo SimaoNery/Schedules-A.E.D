@@ -10,14 +10,14 @@ using namespace std;
 
 class Parse_Files {
 private:
-    list<Uc_class> Uc_classes;
+    vector<Uc_class> Uc_classes;
     set<Student> Students;
 
 public:
     void Parse_Classes();
     void Parse_Students();
 
-    list<Uc_class> get_Uc_classses();
+    vector<Uc_class> get_Uc_classses();
     set<Student> get_Students();
 };
 #endif //SCHEDULES_PARSE_FILES_H

@@ -13,4 +13,6 @@ add_executable(Schedules main.cpp
         Code/Parse_Files.cpp
         Code/Request.cpp
         Code/Request.h
+        Code/Menu.cpp
+        Code/Menu.h
 )
