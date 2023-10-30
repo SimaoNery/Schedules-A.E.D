@@ -17,7 +17,7 @@ public:
     void Parse_Classes();
     void Parse_Students();
 
-    vector<Uc_class> get_Uc_classses();
+    vector<Uc_class> get_Uc_classes();
     set<Student> get_Students();
 };
 #endif //SCHEDULES_PARSE_FILES_H

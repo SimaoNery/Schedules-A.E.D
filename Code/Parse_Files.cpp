@@ -3,7 +3,7 @@
 #include <sstream>
 #include "Parse_Files.h"
 
-//list with call uc classes("turmas de cada Uc")
+//list with all uc classes("turmas de cada Uc")
 void Parse_Files::Parse_Classes(){
     ifstream file("../Information/classes.csv");
     if(!file.is_open()){ //Check if we can open the file
@@ -112,11 +112,12 @@ void Parse_Files::Parse_Students() {
         }
         first = 1;//To inform that we have looped at least once
     }
+    Students.insert(atual);
     //cout << "Students size: " << Students.size() << endl;-->Testing
 }
 
 
-vector<Uc_class> Parse_Files::get_Uc_classses(){
+vector<Uc_class> Parse_Files::get_Uc_classes(){
     return Uc_classes;
 }
 set<Student> Parse_Files::get_Students(){

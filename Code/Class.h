@@ -28,6 +28,10 @@ class Class{
         return(this->weekday == other.weekday && this->startHour == other.startHour && this->duration == other.duration && this->type == other.type);
     }
 
+    bool operator < (const Class& other) const{
+        return(this->startHour < other.get_startHour());
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Class& c) {
         os << "(W: " << c.get_weekday() << "; ";
         os << "Type: " << c.get_type() << "; ";
