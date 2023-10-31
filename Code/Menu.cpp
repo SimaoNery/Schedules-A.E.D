@@ -47,10 +47,10 @@ void Menu::menu(){
         cout << "|------------------------------------------------------------------------|" << endl;
         cout << "| 1-> Number of Students             | 1-> Inscription In A U.C.         |" << endl;
         cout << "| 2-> Student Schedule               | 2-> Cancel Inscription In A U.C.  |" << endl;
-        cout << "| 3-> U.C.'s With The Most Students  | 3-> Change U.C.                   |" << endl;
-        cout << "| 4-> Students Enrolled In A Class   | 4-> Inscription In A Class        |" << endl;
-        cout << "| 5-> U.C.'s Available In A Year     | 5-> Cancel Inscription In A Class |" << endl;
-        cout << "| 6-> Free Time In A Student Day     | 6-> Change Class                  |" << endl;
+        cout << "| 3-> U.C.'s With The Most Students  | 3-> Change Class                  |" << endl;
+        cout << "| 4-> Students Enrolled In A Class   | 4-> Revert Request                |" << endl;
+        cout << "| 5-> U.C.'s Available In A Year     |                                   |" << endl;
+        cout << "| 6-> Free Time In A Student Day     |                                   |" << endl;
         cout << "|                                                                        |" << endl;
         cout << "|                                                    #Press Q to leave   |" << endl;
         cout << "|------------------------------------------------------------------------|" << endl;
@@ -283,8 +283,7 @@ void Menu::menu(){
         }
 
         else{
-            cout << "The operation inserted doesn't exist!";
-            break;
+            cout << "The operation inserted doesn't exist!" << endl;
         }
     }
 }
