@@ -48,11 +48,14 @@ void Menu::menu(){
         cout << "| 1-> Number of Students             | 1-> Inscription In A U.C.         |" << endl;
         cout << "| 2-> Student Schedule               | 2-> Cancel Inscription In A U.C.  |" << endl;
         cout << "| 3-> U.C.'s With The Most Students  | 3-> Change Class                  |" << endl;
-        cout << "| 4-> Students Enrolled In A Class   | 4-> Revert Request                |" << endl;
-        cout << "| 5-> U.C.'s Available In A Year     |                                   |" << endl;
-        cout << "| 6-> Free Time In A Student Day     |                                   |" << endl;
-        cout << "|                                                                        |" << endl;
-        cout << "|                                                    #Press Q to leave   |" << endl;
+        cout << "| 4-> Students Enrolled In A Class   |                                   |" << endl;
+        cout << "| 5-> U.C.'s Available In A Year     | 4-> Check Request                 |" << endl;
+        cout << "| 6-> Free Time In A Student Day     | 5-> Process Request               |" << endl;
+        cout << "|                                    |                                   |" << endl;
+        cout << "|                                    | 6->Revert Request                 |" << endl;
+        cout << "|                                    |                                   |" << endl;
+        cout << "|                                    |                                   |" << endl;
+        cout << "|                                    |                #Press Q to leave  |" << endl;
         cout << "|------------------------------------------------------------------------|" << endl;
         cout << "What type of operation do you want to do? (I or C)" << endl;
 
@@ -262,8 +265,8 @@ void Menu::menu(){
                     break;
 
                 default:
-                    cout << "Invalid Operation! Please Try Again" << endl;
-                    break;
+                    cout << "Invalid Operation!" << endl;
+                    exit(0);
             }
         }
 
