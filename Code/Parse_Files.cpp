@@ -28,8 +28,8 @@ void Parse_Files::Parse_Classes(){
         getline(iss, Dur, ',');
         getline(iss, Type, '\r');
 
-        double hour = stod(Shour); //converter strings para integer
-        double duration = stod(Dur); //converter strings para integer
+        double hour = stod(Shour); //convert string to integer
+        double duration = stod(Dur); //convert string to integer
 
         Class aula(Wday, Type, hour, duration);
 
@@ -40,7 +40,7 @@ void Parse_Files::Parse_Classes(){
             Uc_class turma(Ucode, Ccode, schedule);
             Uc_classes.push_back(turma);
         }
-        //Otherwise we search in Uc_classes for the same class in the same Uc and add a new class to the schedule if it is already there, or create a new class if it doesn't
+        //Otherwise we search in Uc_classes for the same class("turma") in the same Uc and add a new class("aula") to the schedule if it is already there, or create a new class if it doesn't
         else{
             bool existing_class = false;
             for(auto itr = Uc_classes.begin(); itr != Uc_classes.end(); itr++){
@@ -61,7 +61,6 @@ void Parse_Files::Parse_Classes(){
         }
         lastUc = Ucode;
     }
-    //cout << "Uc_classes size: " << Uc_classes.size() << endl;-->Testing
 }
 
 //set with all students and their information

@@ -6,40 +6,42 @@ using namespace std;
 
 class Class{
     private:
+    ///day of the week
         string weekday;
+    ///type of class
         string type;
+    ///starting hour
         double startHour;
+    ///duration
         double duration;
-
     public:
+        ///constructor
         Class(string weekday, string type, double startHour, double duration);
-
-        void set_weekday(string weekday);
-        void set_startHour(double startHour);
-        void set_duration(double duration);
-        void set_type(string type);
-
+        ///
+        /// \return weekday
         string get_weekday() const;
+        /// \return startHour
         double get_startHour() const;
+        /// \return duration
         double get_duration() const;
+        /// \return type
         string get_type() const;
-
-    bool operator == (const Class& other) const{
-        return(this->weekday == other.weekday && this->startHour == other.startHour && this->duration == other.duration && this->type == other.type);
-    }
-
-    bool operator < (const Class& other) const{
-        return(this->startHour < other.get_startHour());
-    }
-
-    friend std::ostream& operator<<(std::ostream& os, const Class& c) {
-        os << "(W: " << c.get_weekday() << "; ";
-        os << "Type: " << c.get_type() << "; ";
-        os << "Start Hour: " << c.get_startHour() << "; ";
-        os << "Duration: " << c.get_duration() << ")";
-        return os;
-    }
-
-
+        ///
+        ///override of operator '==' for class Class
+        bool operator == (const Class& other) const{
+            return(this->weekday == other.weekday && this->startHour == other.startHour && this->duration == other.duration && this->type == other.type);
+        }
+        ///override of operator '<' for class Class
+        bool operator < (const Class& other) const{
+            return(this->startHour < other.get_startHour());
+        }
+        ///override of operator '<<' for class Class
+        friend std::ostream& operator<<(std::ostream& os, const Class& c) {
+            os << "(W: " << c.get_weekday() << "; ";
+            os << "Type: " << c.get_type() << "; ";
+            os << "Start Hour: " << c.get_startHour() << "; ";
+            os << "Duration: " << c.get_duration() << ")";
+            return os;
+        }
 };
 #endif //UNTITLED_CLASS_H

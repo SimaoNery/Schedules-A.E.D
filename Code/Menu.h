@@ -6,8 +6,8 @@ using namespace std;
 
 class Menu {
     public:
+        ///will initialize the menu
         void menu();
 };
-
 
 #endif //UNTITLED_MENU_H

@@ -30,9 +30,9 @@ void reverse_sort(map<string, int>& x){
     }
 }
 
-
+//where everything happens
 void Menu::menu(){
-
+    //Get the information in their data structures
     Parse_Files aux;
     aux.Parse_Classes();
     aux.Parse_Students();
@@ -55,6 +55,7 @@ void Menu::menu(){
         cout << "|                                    | 6->Revert Request                 |" << endl;
         cout << "|                                    |                                   |" << endl;
         cout << "|                                    |                                   |" << endl;
+        cout << "|                                    |                                   |" << endl; // FAZER UMA CONTAGEM DAS MUDAÇAS ATUAIS POR REALIZAR
         cout << "|                                    |                #Press Q to leave  |" << endl;
         cout << "|------------------------------------------------------------------------|" << endl;
         cout << "What type of operation do you want to do? (I or C)" << endl;
@@ -66,6 +67,7 @@ void Menu::menu(){
             cout << "What type of Information you want to know? (1,2,3,4,5,6)" << endl;
             cin >> choice2;
 
+            //Useful Variables in the Switch
             string code1;
             string code2;
 
