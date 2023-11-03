@@ -15,6 +15,8 @@ class Student {
         list<Uc_class> schedule;
     public:
         ///constructor
+        /// \param studentCode
+        /// \param studentName
         Student(string studentCode,string studentName);
         ///sets the schedule of an already existing student
         void update_studentSchedule(Uc_class schedule);

@@ -17,13 +17,14 @@ list<Class> Uc_class::get_schedule() const {
     return schedule;
 }
 
-void Uc_class::set_schedule(list<Class>schedule) {
-        this->schedule = schedule;
-}
-
 void Uc_class::set_classCode(string classCode){
     this->classCode = classCode;
 }
+
 void Uc_class::set_ucCode(string ucCode){
     this->ucCode = ucCode;
+}
+
+void Uc_class::set_schedule(list<Class>schedule) {
+        this->schedule = schedule;
 }

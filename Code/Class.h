@@ -15,7 +15,11 @@ class Class{
     ///duration
         double duration;
     public:
-        ///constructor
+        /// constructor
+        /// \param weekday
+        /// \param type
+        /// \param startHour
+        /// \param duration
         Class(string weekday, string type, double startHour, double duration);
         ///
         /// \return weekday
@@ -26,6 +30,10 @@ class Class{
         double get_duration() const;
         /// \return type
         string get_type() const;
+        ///
+        /// \param c2
+        /// \return true if there are overlap between classes
+        bool conflict(const Class& c2) const;
         ///
         ///override of operator '==' for class Class
         bool operator == (const Class& other) const{

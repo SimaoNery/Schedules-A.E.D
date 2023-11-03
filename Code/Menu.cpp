@@ -2,6 +2,7 @@
 #include "Parse_Files.h"
 #include <algorithm>
 #include <map>
+#include <queue>
 
 
 //code so that we can sort and reverse_sort maps(used in listing->3)
@@ -36,8 +37,8 @@ void Menu::menu(){
     Parse_Files aux;
     aux.Parse_Classes();
     aux.Parse_Students();
-    auto Turmas = aux.get_Uc_classes();
-    auto Students = aux.get_Students();
+    string studentCode, ucCode, ucCodeDestiny, classCode, classCodeDestiny;
+    Requests request(0,0); //Request object to store info to verify and process the request
 
 
     string choice1;
@@ -91,7 +92,7 @@ void Menu::menu(){
                         cin >> code1;
                         cout << "Insert U.C code:";
                         cin >> code2;
-                        for (const Student &student: Students) {
+                        for (const Student &student: aux.get_Students()) {
                             auto horario = student.get_studentSchedule();
                             for(Uc_class& turma : horario){
                                 if(turma.get_classCode() == code1 && turma.get_ucCode() == code2){
@@ -105,7 +106,7 @@ void Menu::menu(){
                     else if(choice3 == 2){
                         cout << "Insert U.C. code:";
                         cin >> code1;
-                        for(const Student &student : Students){
+                        for(const Student &student : aux.get_Students()){
                             auto horario = student.get_studentSchedule();
                             for(Uc_class& turma : horario){
                                 if(turma.get_ucCode() == code1){
@@ -122,7 +123,7 @@ void Menu::menu(){
                         vector<Student> terceiro;
                         vector<Student> segundo;
                         vector<Student> primeiro;
-                        for(Student student : Students){
+                        for(Student student : aux.get_Students()){
                             bool inserted = false;
                             auto horario = student.get_studentSchedule();
                             for(Uc_class& turma : horario) {
@@ -158,7 +159,7 @@ void Menu::menu(){
                 case 2:
                     cout << "Insert student code:";
                     cin >> code1;
-                    for(Student student : Students){
+                    for(Student student : aux.get_Students()){
                         if(student.get_studentCode() == code1){
                             cout << "This is " << student.get_studentName() << " weekly schedule:" << endl;
                             for (const Uc_class& aclass : student.get_studentSchedule()) {
@@ -173,7 +174,7 @@ void Menu::menu(){
                case 3:
                     cout << "Do you want the information in: 1->Ascending order | 2->Descending order | 3->U.C. Code" << endl;
                     cin >> choice3;
-                    for(const Student& student : Students){
+                    for(const Student& student : aux.get_Students()){
                         auto horario = student.get_studentSchedule();
                         for(const Uc_class &turma : horario){
                             result[turma.get_ucCode()]++;
@@ -199,7 +200,7 @@ void Menu::menu(){
                     cin >> code1;
                     cout << "Insert the U.C. code:" << endl;
                     cin >> code2;
-                    for(const Student& student : Students){
+                    for(const Student& student : aux.get_Students()){
                         auto horario = student.get_studentSchedule();
                         for(const Uc_class &turma : horario){
                             if(turma.get_classCode() == code1 && turma.get_ucCode() == code2){
@@ -224,7 +225,7 @@ void Menu::menu(){
                 case 5:
                     cout << "For each year do you wanna know the U.C.'s available? (1,2,3)" << endl;
                     cin >> choice3;
-                    for(auto aula : Turmas){
+                    for(auto aula : aux.get_Uc_classes()){
                         if(aula.get_classCode().substr(0,1) == to_string(choice3)) {
                             names.insert(aula.get_ucCode());
                         }
@@ -242,7 +243,7 @@ void Menu::menu(){
                     if(code2 == "Saturday" || code2 == "Sunday"){
                         cout << "You have all day free!" << endl;
                     }
-                    for(Student student : Students){
+                    for(Student student : aux.get_Students()){
                         if(student.get_studentCode() == code1){
                             schedule = student.get_studentSchedule();
                             break;
@@ -272,17 +273,134 @@ void Menu::menu(){
             }
         }
 
-        else if(choice1 == "C"){
+        else if(choice1 == "C"){//Comentar
             int choice2 = 0;
-            cout << "What type of Changes you want to do? (1,2,3,4,5,6)";
+            int id;
+            cout << "What type of Changes you want to do? (1,2,3,4,5,6)" << endl;
             cin >> choice2;
 
-            //switch (choice2){
-                //case 1:
-            //}
+            switch (choice2) {
+                case 1:
+                    cout << "Insert student code: ";
+                    cin >> studentCode;
+                    if (!aux.find_student(studentCode)) {
+                        cout << "Invalid student code!" << endl;
+                        break;
+                    }
+                    cout << "Insert the code of the U.C you want to register:" << endl;
+                    cin >> ucCode;
+                    if (!aux.find_UC(ucCode)) {
+                        cout << "Invalid U.C!" << endl;
+                        break;
+                    }
+                    if(aux.find_student_UC(studentCode, ucCode)) {
+                        cout << "The student is already registed in this U.C" << endl;
+                        break;
+                    }
+                    request = Requests(choice2,0); //stores the option of the user
+                    request.data.push_back(studentCode);
+                    request.data.push_back(ucCode);
+                    aux.add_request(request); //store the data inserted by user on queue to check the validation of the requests
+                    cout << "Your request has been registered!" << endl;
+                    break;
+                    //option is Change Inscription In A U.C.
+                case 2:
+                    cout << "Insert student code: " << endl;
+                    cin >> studentCode;
+                    if(!aux.find_student(studentCode)) {
+                        cout << "Invalid student code!" << endl;
+                        break;
+                    }
+                    cout << "Insert the code of the U.C you want to leave: ";
+                    cin >> ucCode;
+                    if (!aux.find_UC(ucCode)) {
+                        cout << "Invalid U.C!" << endl;
+                        break;
+                    }
+                    if(!aux.find_student_UC(studentCode, ucCode)) {
+                        cout << "The student is not registered in this U.C" << endl;
+                        break;
+                    }
+                    request = Requests(choice2,0);
+                    request.data.push_back(studentCode);
+                    request.data.push_back(ucCode);
+                    aux.add_request(request); //stores the data inserted by user on queue to check the validation of the requests
+                    cout << "Your request has been registered!" << endl;
+                    break;
+                    //option is Change Class.
+                case 3:
+                    cout << "Insert student code: " << endl;
+                    cin >> studentCode;
+                    if (!aux.find_student(studentCode)) {
+                        cout << "Invalid student code!" << endl;
+                        break;
+                    }
+                    cout << "Insert the code of the U.C you want to change of class: ";
+                    cin >> ucCode;
+                    if (!aux.find_UC(ucCode)) {
+                        cout << "Invalid U.C!" << endl;
+                        break;
+                    }
+                    if(!aux.find_student_UC(studentCode, ucCode)) {
+                        cout << "The student is not registered in this U.C" << endl;
+                        break;
+                    }
+                    cout << "Insert the class that you are enrolled in: ";
+                    cin >> classCode;
+                    if(!aux.find_UC_class(ucCode, classCode)) {
+                        cout << "Invalid class" << endl;
+                        break;
+                    }
+                    if(!aux.find_student_class(studentCode, ucCode, classCode)) {
+                        cout << "The student is not enrolled in this class" << endl;
+                        break;
+                    }
+                    cout << "Insert the class that you want to join: ";
+                    cin >> classCodeDestiny;
+                    if(!aux.find_UC_class(ucCode, classCodeDestiny)) {
+                        cout << "Invalid class" << endl;
+                        break;
+                    }
+                    request = Requests(choice2,0);
+                    request.data.push_back(studentCode);
+                    request.data.push_back(ucCode);
+                    request.data.push_back(classCode);
+                    request.data.push_back(classCodeDestiny);
+                    aux.add_request(request); //stores the data inserted by user on queue to check the validation of the requests
+                    cout << "Your request has been registered!" << endl;
+                    break;
+
+                case 4:
+                    cout << "Analyzing requests..." << endl;
+                    aux.Check_Request();
+                    break;
+
+                case 5:
+                    cout << "Processing requests..." << endl;
+                    aux.Process_Request();
+                    break;
+
+
+                case 6:
+                    cout << "Insert the ID of the change you want to revert: " << endl;
+                    cin >> id;
+                    if(!aux.check_id(id)) {
+                        cout << "The ID doesn't exist!" << endl;
+                        break;
+                    }
+                    cout << "Reverting request..." << endl;
+                    aux.Revert_Request(id);
+                    break;
+
+                default:
+                    cout << "Invalid Operation! PLease Try Again" << endl;
+                    break;
+            }
         }
 
         else if(choice1 == "Q"){
+            aux.print_students();
+            cout << "Save completed!" << endl;
             cout << "See you next time!";
             exit(0);
         }

@@ -7,22 +7,6 @@ Class::Class(string weekday, string type, double startHour, double duration) {
     this->duration = duration;
 }
 
-void Class::set_weekday(string weekday) {
-    this->weekday = weekday;
-}
-
-void Class::set_startHour(double startHour) {
-    this->startHour = startHour;
-}
-
-void Class::set_duration(double duration) {
-    this->duration = duration;
-}
-
-void Class::set_type(string type) {
-    this->type = type;
-}
-
 string Class::get_weekday() const {
     return weekday;
 }
@@ -37,5 +21,15 @@ double Class::get_duration() const {
 
 string Class::get_type() const {
     return type;
+}
+
+bool Class::conflict(const Class& c2) const{
+    if(this->weekday != c2.get_weekday()) {
+        return false;
+    }
+    if(this->startHour + this->duration <= c2.get_startHour() || this->startHour >= c2.get_startHour() + c2.get_duration()) {
+        return false;
+    }
+    return true;
 }
 
