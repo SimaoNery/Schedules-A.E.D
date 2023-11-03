@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include "Parse_Files.h"
+using namespace std;
 
 //list with all uc classes("turmas de cada Uc")
 void Parse_Files::Parse_Classes(){
@@ -196,8 +197,7 @@ void Parse_Files::Process_Request() {
                     break;
                 }
                 cout << "The registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] <<" was approved! Registered in class " << get_class_student(analyzedRequest.data[0], analyzedRequest.data[1]) << endl;
-                analyzedRequest.id = id++;
-                approvedRequestsHistory.push_back(analyzedRequest);
+                approvedRequestsHistory.push(analyzedRequest);
                 break;
 
             case 2:
@@ -207,8 +207,7 @@ void Parse_Files::Process_Request() {
                     break;
                 }
                 cout << "The request of cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << " was approved!" << endl;
-                analyzedRequest.id = id++;
-                approvedRequestsHistory.push_back(analyzedRequest);
+                approvedRequestsHistory.push(analyzedRequest);
                 break;
 
             case 3:
@@ -218,8 +217,7 @@ void Parse_Files::Process_Request() {
                     break;
                 }
                 cout << "The swap of student " << analyzedRequest.data[0] << " from class " << analyzedRequest.data[2] << " to class " << analyzedRequest.data[3] << " of U.C " << analyzedRequest.data[1] << " was approved!" << endl;
-                analyzedRequest.id = id++;
-                approvedRequestsHistory.push_back(analyzedRequest);
+                approvedRequestsHistory.push(analyzedRequest);
                 break;
 
         }
@@ -228,45 +226,39 @@ void Parse_Files::Process_Request() {
     print_changes_history();
 }
 
-void Parse_Files::Revert_Request(const int& id) {
-    string aux;
-    Requests request1(0,0);
-    for(auto &request : approvedRequestsHistory) {
-        if(request.id == id) {
-            switch (request.choice) {
+void Parse_Files::Revert_Request() {
+    Requests request = approvedRequestsHistory.top();
+    approvedRequestsHistory.pop();
+        switch (request.choice) {
                 case 1:
-                    request1.choice = 2;
-                    request1.id = request.id;
-                    request1.data.push_back(request.data[0]);
-                    request1.data.push_back(request.data[1]);
-                    add_request(request1);
+                    request.choice = 2;
+                    request.data.push_back(request.data[0]);
+                    request.data.push_back(request.data[1]);
+                    add_request(request);
                     break;
 
                 case 2:
-                    request1.choice = 1;
-                    request1.id = request.id;
-                    request1.data.push_back(request.data[0]);
-                    request1.data.push_back(request.data[1]);
-                    add_request(request1);
+                    request.choice = 1;
+                    request.data.push_back(request.data[0]);
+                    request.data.push_back(request.data[1]);
+                    add_request(request);
                     break;
 
                 case 3:
-                    request1.choice = request.choice;
-                    request1.id = request.id;
-                    request1.data.push_back(request.data[0]);
-                    request1.data.push_back(request.data[1]);
-                    request1.data.push_back(request.data[3]);
-                    request1.data.push_back(request.data[2]);
-                    add_request(request1);
+                    request.choice = request.choice;
+                    request.data.push_back(request.data[0]);
+                    request.data.push_back(request.data[1]);
+                    request.data.push_back(request.data[2]);
+                    request.data.push_back(request.data[3]);
+                    add_request(request);
                     break;
 
                 default:
                     cout << "Error in the reversing process" << endl;
                     break;
             }
+
         }
-    }
-}
 
 void Parse_Files::update_students(const Student& student) {
     auto it = Students.begin();
@@ -274,6 +266,7 @@ void Parse_Files::update_students(const Student& student) {
         if(it->get_studentCode() == student.get_studentCode()) {
             it = Students.erase(it);
             Students.insert(student);
+            break;
         }else {
             ++it;
         }
@@ -438,19 +431,15 @@ bool Parse_Files::check_class_balance(const string &ucCode, const string &classC
     return true;
 }
 
-bool Parse_Files::check_id(const int& id) {
-    for(auto &request : approvedRequestsHistory) {
-        if(request.id == id) {
-            return true;
-        }
-    }
-    return false;
-}
-
 void Parse_Files::add_student_UC(const string &studentCode, const string &ucCode) {
     Uc_class uc;
     uc.set_ucCode(ucCode);
     uc.set_classCode(find_class_free(studentCode, ucCode));
+    for(Uc_class& turma : Uc_classes){
+        if(turma.get_ucCode() == ucCode && turma.get_classCode() == uc.get_classCode()){
+            uc.set_schedule(turma.get_schedule());
+        }
+    }
     for(Student student : Students) {
         if(student.get_studentCode() == studentCode) {
             student.update_studentSchedule(uc);
@@ -460,17 +449,18 @@ void Parse_Files::add_student_UC(const string &studentCode, const string &ucCode
 }
 
 void Parse_Files::remove_student_UC(const string &studentCode, const string &ucCode) {
-    for(const Student& student : Students) {
+    for(Student student : Students) {
         if(student.get_studentCode() == studentCode) {
-            auto ucs = student.get_studentSchedule();
-            for(auto it = ucs.begin(); it != ucs.end();) {
-                if(it->get_ucCode() == ucCode) {
-                    it = ucs.erase(it);
-                    update_students(student);
-                }else {
-                    it++;
+            auto turmas = student.get_studentSchedule();
+            list<Uc_class> novoSchedule;
+            for(auto turma : turmas) {
+                if(turma.get_ucCode() != ucCode){
+                    novoSchedule.push_back(turma);
                 }
             }
+            student.set_studentSchedule(novoSchedule);
+            update_students(student);
+            break;
         }
     }
 }
@@ -512,11 +502,13 @@ void Parse_Files::print_changes_history() {
         cout << "Impossible to open the file!" << endl;
     }
     file << "Choice,ID,ChangesData" << endl;
-    for(const Requests& info : approvedRequestsHistory) {
+    while(!approvedRequestsHistory.empty()) {
+        Requests info = approvedRequestsHistory.top();
         file << info.choice << "," << info.choice << ",";
         for(auto &d : info.data) {
             file << d << " ";
         }
         file << endl;
+        approvedRequestsHistory.pop();
     }
 }

@@ -7,16 +7,16 @@
 #include <string>
 #include <set>
 #include <queue>
+#include <stack>
 using namespace std;
 
 ///choice is the type of change and data are all process data to complete the request
 struct Requests {
     int choice;
-    int id;
     vector<string> data;
     ///constructor
     /// \param choice
-    explicit Requests(int choice, int id) : choice(choice), id(id) {}
+    explicit Requests(int choice) : choice(choice) {}
 };
 ///Compares students names to able us to sort students
 struct SortStudentNames {
@@ -37,8 +37,7 @@ private:
     ///where all requests will be processed
     queue<Requests> analyzedRequests;
     ///where all processed requests are stored to make it simpler to revert them after
-    vector<Requests> approvedRequestsHistory;
-    int id = 0;
+    stack<Requests> approvedRequestsHistory;
 public:
     ///reads the files and creates a vector with all classes
     /// O(n^2)
@@ -72,7 +71,7 @@ public:
     ///Reverts the request asked
     ///complexidade
     /// \param id
-    void Revert_Request(const int& id);
+    void Revert_Request();
     ///
     ///Updates the information of a student after a request
     ///complexidade
@@ -153,11 +152,6 @@ public:
     /// \param classCode
     /// \return true if the U_classes are balanced
     bool check_class_balance(const string& ucCode, const string& classCode);
-    ///
-    /// complexidade
-    /// \param id
-    /// \return true if the id is the same
-    bool check_id(const int& id);
     ///
     ///Adds  a new Uc_class to the student schedule
     ///complexidade

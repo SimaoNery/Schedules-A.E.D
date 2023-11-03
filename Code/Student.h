@@ -18,8 +18,11 @@ class Student {
         /// \param studentCode
         /// \param studentName
         Student(string studentCode,string studentName);
+        ///
+        /// \param info
+        void set_studentSchedule(list<Uc_class> info);
         ///sets the schedule of an already existing student
-        void update_studentSchedule(Uc_class schedule);
+        void update_studentSchedule(Uc_class schedule) ;
         /// \return the student code
         string get_studentCode() const;
         /// \return the student name

@@ -5,6 +5,10 @@ Student::Student(string studentCode, string studentName) {
     this->studentName = studentName;
 }
 
+void Student::set_studentSchedule(list<Uc_class> info){
+    this->schedule = info;
+}
+
 void Student::update_studentSchedule(Uc_class info) {
     this->schedule.push_back(info);
 }

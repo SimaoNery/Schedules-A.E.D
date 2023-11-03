@@ -38,7 +38,7 @@ void Menu::menu(){
     aux.Parse_Classes();
     aux.Parse_Students();
     string studentCode, ucCode, ucCodeDestiny, classCode, classCodeDestiny;
-    Requests request(0,0); //Request object to store info to verify and process the request
+    Requests request(0); //Request object to store info to verify and process the request
 
 
     string choice1;
@@ -53,7 +53,7 @@ void Menu::menu(){
         cout << "| 5-> U.C.'s Available In A Year     | 4-> Check Request                 |" << endl;
         cout << "| 6-> Free Time In A Student Day     | 5-> Process Request               |" << endl;
         cout << "|                                    |                                   |" << endl;
-        cout << "|                                    | 6->Revert Request                 |" << endl;
+        cout << "|                                    | 6-> Revert Request                |" << endl;
         cout << "|                                    |                                   |" << endl;
         cout << "|                                    |                                   |" << endl;
         cout << "|                                    |                                   |" << endl; // FAZER UMA CONTAGEM DAS MUDAÇAS ATUAIS POR REALIZAR
@@ -240,32 +240,45 @@ void Menu::menu(){
                     cin >> code1;
                     cout << "Insert the day of the week:" << endl;
                     cin >> code2;
-                    if(code2 == "Saturday" || code2 == "Sunday"){
+                    for(char& c : code2){c = tolower(c);}
+                    if(code2 == "saturday" || code2 == "sunday"){
                         cout << "You have all day free!" << endl;
+                        break;
                     }
-                    for(Student student : aux.get_Students()){
-                        if(student.get_studentCode() == code1){
-                            schedule = student.get_studentSchedule();
-                            break;
-                        }
-                    }
-                    for(Uc_class turma : schedule){
-                        auxil = turma.get_schedule();
-                        for(Class aula : auxil){
-                            if(aula.get_weekday() == code2){
-                                day.insert(aula);
+                    else if(code2 == "monday"  || code2 == "tuesday" || code2 == "wednesday" || code2 == "thursday" || code2 == "friday") {
+                        for (Student student: aux.get_Students()) {
+                            if (student.get_studentCode() == code1) {
+                                schedule = student.get_studentSchedule();
+                                break;
                             }
                         }
+                        code2[0] = toupper(code2[0]);
+                        for (Uc_class turma: schedule) {
+                            auxil = turma.get_schedule();
+                            for (Class aula: auxil) {
+                                if (aula.get_weekday() == code2) {
+                                    day.insert(aula);
+                                }
+                            }
+                        }
+                        for (Class aula: day) {
+                            double start = aula.get_startHour();
+                            double free = start - previous;
+                            if (free > 0) {
+                                cout << "You have some free time from " << previous << " to " << start << endl;
+                            }
+                            previous = start + aula.get_duration();
+                        }
+                        if (previous == 0) {
+                            cout << "You have all day free!" << endl;
+                            break;
+                        }
+                        if (previous < end) {
+                            cout << "You have some free time from " << previous << " to " << end << endl;
+                        }
+                        break;
                     }
-                    for(Class aula : day){
-                        double start = aula.get_startHour();
-                        double free = start - previous;
-                        if(free > 0){cout << "You have some free time from " << previous << " to " << start << endl;}
-                        previous = start + aula.get_duration();
-                    }
-                    if(previous == 0){cout << "You have all day free!" << endl; break;}
-                    if(previous < end){cout << "You have some free time from " << previous << " to " << end << endl;}
-                    break;
+                    else{cout << "Day inserted doesn't exist!" << endl;break;}
 
                 default:
                     cout << "Invalid Operation!" << endl;
@@ -297,7 +310,7 @@ void Menu::menu(){
                         cout << "The student is already registed in this U.C" << endl;
                         break;
                     }
-                    request = Requests(choice2,0); //stores the option of the user
+                    request = Requests(choice2); //stores the option of the user
                     request.data.push_back(studentCode);
                     request.data.push_back(ucCode);
                     aux.add_request(request); //store the data inserted by user on queue to check the validation of the requests
@@ -321,7 +334,7 @@ void Menu::menu(){
                         cout << "The student is not registered in this U.C" << endl;
                         break;
                     }
-                    request = Requests(choice2,0);
+                    request = Requests(choice2);
                     request.data.push_back(studentCode);
                     request.data.push_back(ucCode);
                     aux.add_request(request); //stores the data inserted by user on queue to check the validation of the requests
@@ -361,7 +374,7 @@ void Menu::menu(){
                         cout << "Invalid class" << endl;
                         break;
                     }
-                    request = Requests(choice2,0);
+                    request = Requests(choice2);
                     request.data.push_back(studentCode);
                     request.data.push_back(ucCode);
                     request.data.push_back(classCode);
@@ -382,14 +395,8 @@ void Menu::menu(){
 
 
                 case 6:
-                    cout << "Insert the ID of the change you want to revert: " << endl;
-                    cin >> id;
-                    if(!aux.check_id(id)) {
-                        cout << "The ID doesn't exist!" << endl;
-                        break;
-                    }
                     cout << "Reverting request..." << endl;
-                    aux.Revert_Request(id);
+                    aux.Revert_Request();
                     break;
 
                 default:
