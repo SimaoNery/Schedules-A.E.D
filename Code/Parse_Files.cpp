@@ -66,12 +66,17 @@ void Parse_Files::Parse_Classes(){
 
 //set with all students and their information
 void Parse_Files::Parse_Students() {
-    ifstream file("../Information/students_classes.csv");
-    if(!file.is_open()){ //Check if we can open the file
-        cout << "Impossible to open the file!" << endl;
+    ifstream test("../Information/output.csv");
+    string fname, line;
+    if(getline(test, line).eof()){
+        fname = "../Information/students_classes.csv";
     }
+    else{
+        fname = "../Information/output.csv";
+    }
+    ifstream file(fname);
 
-    string line; getline(file, line); //Ignore the first line
+    getline(file, line); //Ignore the first line
 
     int first = 0;//Will be used to check if we are looping for the first time
     Student atual("","");//Student that is being treated
@@ -415,7 +420,7 @@ bool Parse_Files::check_conflict_schedule(const string &studentCode, const strin
                     for(const Uc_class& uc : student.get_studentSchedule()) {
                         for(const Class &schedule : uc.get_schedule()) {
                             for(const Class &clasSchedule : clas.get_schedule()) {
-                                if(schedule.conflict(clasSchedule) && schedule.get_type() != "T") {
+                                if(schedule.conflict(clasSchedule) && schedule.get_type() != "T" && clasSchedule.get_type() != "T") {
                                     return true;
                                 }
                             }
