@@ -23,13 +23,15 @@ string Class::get_type() const {
     return type;
 }
 
-bool Class::conflict(const Class& c2) const{
-    if(this->weekday != c2.get_weekday()) {
+bool Class::conflict(const Class& c2) const {
+    if (this->weekday != c2.get_weekday()) {
         return false;
     }
-    if(this->startHour + this->duration <= c2.get_startHour() || this->startHour >= c2.get_startHour() + c2.get_duration()) {
-        return false;
+    else{
+        if(this->startHour + this->duration < c2.get_startHour() || this->startHour == c2.get_startHour()){
+            return false;
+        }
+        return true;
     }
-    return true;
 }
 

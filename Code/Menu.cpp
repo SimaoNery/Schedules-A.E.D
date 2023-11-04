@@ -307,7 +307,7 @@ void Menu::menu(){
                         break;
                     }
                     if(aux.find_student_UC(studentCode, ucCode)) {
-                        cout << "The student is already registed in this U.C" << endl;
+                        cout << "The student is already registered in this U.C" << endl;
                         break;
                     }
                     request = Requests(choice2); //stores the option of the user
@@ -348,7 +348,7 @@ void Menu::menu(){
                         cout << "Invalid student code!" << endl;
                         break;
                     }
-                    cout << "Insert the code of the U.C you want to change of class: ";
+                    cout << "Insert the code of the U.C you want to make changes to: ";
                     cin >> ucCode;
                     if (!aux.find_UC(ucCode)) {
                         cout << "Invalid U.C!" << endl;

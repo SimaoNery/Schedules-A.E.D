@@ -164,14 +164,14 @@ void Parse_Files::Check_Request() {
 
             case 3:
                 if(!check_class_cap(request.data[1], request.data[3])) {
-                    cout << "The student " << request.data[0] << " cannot enroll at class " << request.data[3] << " of U.C " << request.data[1] << " because this class don´t have free space" << endl;
+                    cout << "The student " << request.data[0] << " cannot enroll at class " << request.data[3] << " of U.C " << request.data[1] << " because this class does not have any free space" << endl;
                     break;
                 }
                 if(check_conflict_schedule(request.data[0], request.data[1], request.data[3])) {
                     cout << "The student " << request.data[0] << " cannot enroll at class " << request.data[3] << " of U.C " << request.data[1] << " because there is a conflict with student schedule" << endl;
                     break;
                 }
-                if(!check_class_balance(request.data[1], request.data[3])) {
+                if(!check_class_balance_switch(request.data[1],request.data[2], request.data[3])) {
                     cout << "The student " << request.data[0] << " cannot enroll at class " << request.data[3] << " of U.C " << request.data[1] << " because there is a balance disturb" << endl;
                     break;
                 }
@@ -196,7 +196,7 @@ void Parse_Files::Process_Request() {
                     cout << "Error in registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << endl;
                     break;
                 }
-                cout << "The registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] <<" was approved! Registered in class " << get_class_student(analyzedRequest.data[0], analyzedRequest.data[1]) << endl;
+                cout << "The registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] <<" is done! Registered in class " << get_class_student(analyzedRequest.data[0], analyzedRequest.data[1]) << endl;
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
 
@@ -206,7 +206,7 @@ void Parse_Files::Process_Request() {
                     cout << "Error on cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << endl;
                     break;
                 }
-                cout << "The request of cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << " was approved!" << endl;
+                cout << "Student " << analyzedRequest.data[0] << " was removed from U.C " << analyzedRequest.data[1] << "!" << endl;
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
 
@@ -216,7 +216,7 @@ void Parse_Files::Process_Request() {
                     cout << "Error on the swap of student " << analyzedRequest.data[0] << " from class " << analyzedRequest.data[2] << " to class " << analyzedRequest.data[3] << " of U.C " << analyzedRequest.data[1] << endl;
                     break;
                 }
-                cout << "The swap of student " << analyzedRequest.data[0] << " from class " << analyzedRequest.data[2] << " to class " << analyzedRequest.data[3] << " of U.C " << analyzedRequest.data[1] << " was approved!" << endl;
+                cout << "The swap of student " << analyzedRequest.data[0] << " from class " << analyzedRequest.data[2] << " to class " << analyzedRequest.data[3] << " of U.C " << analyzedRequest.data[1] << " is done!" << endl;
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
 
@@ -359,10 +359,12 @@ int Parse_Files::get_number_student_class(const string &ucCode, const string &cl
 }
 
 string Parse_Files::get_class_student(const string &studentCode, const string &ucCode) {
-    for(const Student& student : Students) {
-        for(const Uc_class& uc : student.get_studentSchedule()) {
-            if(uc.get_ucCode() == ucCode) {
-                return uc.get_classCode();
+    for (const Student &student: Students) {
+        if (student.get_studentCode() == studentCode) {
+            for (const Uc_class &uc: student.get_studentSchedule()) {
+                if (uc.get_ucCode() == ucCode) {
+                    return uc.get_classCode();
+                }
             }
         }
     }
@@ -399,7 +401,7 @@ bool Parse_Files::check_class_cap(const string &ucCode, const string &classCode)
     return false;
 }
 
-bool Parse_Files::check_conflict_schedule(const string &studentCode, const string &ucCode, const string &classCode) { //Tentar Simplificar!
+bool Parse_Files::check_conflict_schedule(const string &studentCode, const string &ucCode, const string &classCode) {
     for(const Uc_class& clas : Uc_classes) {
         if(clas.get_ucCode() == ucCode && clas.get_classCode() == classCode) {
             for(const Student& student : Students) {
@@ -407,7 +409,7 @@ bool Parse_Files::check_conflict_schedule(const string &studentCode, const strin
                     for(const Uc_class& uc : student.get_studentSchedule()) {
                         for(const Class &schedule : uc.get_schedule()) {
                             for(const Class &clasSchedule : clas.get_schedule()) {
-                                if(schedule.conflict(clasSchedule)) {
+                                if(schedule.conflict(clasSchedule) && schedule.get_type() != "T") {
                                     return true;
                                 }
                             }
@@ -418,6 +420,24 @@ bool Parse_Files::check_conflict_schedule(const string &studentCode, const strin
             }
         }
     }
+}
+
+bool Parse_Files::check_class_balance_switch(const string &ucCode,const string &classatual ,const string &classpretend) {
+    int n1, n2;
+    for(Uc_class atual : Uc_classes){
+        if(atual.get_ucCode() == ucCode && atual.get_classCode() == classatual){
+            n1 = get_number_student_class(atual.get_ucCode(), atual.get_classCode());
+        }
+    }
+    for(Uc_class pretend : Uc_classes){
+        if(pretend.get_ucCode() == ucCode && pretend.get_classCode() == classpretend){
+            n2 = get_number_student_class(pretend.get_ucCode(), pretend.get_classCode());
+        }
+    }
+    if (n1 - n2 > 4) {return true;}
+    else if (n2 - n1 > 4) {return false; }
+    else if (abs(n1-1 - (n2+1)) > 4) { return false;}
+    return true;
 }
 
 bool Parse_Files::check_class_balance(const string &ucCode, const string &classCode) {
@@ -466,14 +486,29 @@ void Parse_Files::remove_student_UC(const string &studentCode, const string &ucC
 }
 
 void Parse_Files::switch_student_class(const string &studentCode, const string &ucCode, const string &classCode) {
-    for(const Student& student : Students) {
+    list<Class> novo;
+    for(Uc_class auxiliar : Uc_classes){
+        if(auxiliar.get_ucCode() == ucCode && auxiliar.get_classCode() == classCode){
+            novo = auxiliar.get_schedule();
+        }
+    }
+    for(Student student : Students) {
         if(student.get_studentCode() == studentCode) {
-            for(Uc_class& uc : student.get_studentSchedule()) {
-                if(uc.get_ucCode() == ucCode) {
-                    uc.set_classCode(classCode);
-                    update_students(student);
+            auto turmas = student.get_studentSchedule();
+            list<Uc_class> novoSchedule;
+            for(auto turma : turmas) {
+                if(turma.get_ucCode() != ucCode) {
+                    novoSchedule.push_back(turma);
+                }
+                else{
+                    turma.set_classCode(classCode);
+                    turma.set_schedule(novo);
+                    novoSchedule.push_back(turma);
                 }
             }
+            student.set_studentSchedule(novoSchedule);
+            update_students(student);
+            break;
         }
     }
 }

@@ -150,7 +150,13 @@ public:
     /// complexidade
     /// \param ucCode
     /// \param classCode
-    /// \return true if the U_classes are balanced
+    /// \return true if the Uc_classes are balanced(used only in switch)
+    bool check_class_balance_switch(const string& ucCode, const string& classatual, const string& classpretend);
+    ///
+    ///complexidade
+    /// \param ucCode
+    /// \param classCode
+    /// \return true if the Uc_classes are balanced
     bool check_class_balance(const string& ucCode, const string& classCode);
     ///
     ///Adds  a new Uc_class to the student schedule
