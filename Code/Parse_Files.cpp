@@ -91,7 +91,49 @@ void Parse_Files::Parse_Students() {
 
             if(first != 0) {//If we are looping for the first time we need to change the "atual" so that is represents a student correctly, so we jump the insert
 
-                Students.insert(atual);//Insert the student being treated so that we can treat a new one(since once a student changes, it won't appear again)
+                Students.insert(atual);//Insert the student being treated so that we cvoid Parse_Files::Revert_Request() {
+    if (approvedRequestsHistory.empty()) {
+        cout << "No requests to revert." << endl;
+        return;
+    }
+    Requests request = approvedRequestsHistory.top();
+    Requests request1(0);
+    switch (request.choice) {
+        case 1:
+            request1.choice = 2;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
+
+        case 2:
+            request1.choice = 1;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
+
+        case 3:
+            request1.choice = request.choice;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            request1.data.push_back(request.data[2]);
+            request1.data.push_back(request.data[3]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
+
+        default:
+            cout << "Error in the reversing process" << endl;
+            break;
+    }
+}
+an treat a new one(since once a student changes, it won't appear again)
 
             }
             atual = Student(Scode, Sname);
@@ -227,38 +269,47 @@ void Parse_Files::Process_Request() {
 }
 
 void Parse_Files::Revert_Request() {
+    if (approvedRequestsHistory.empty()) {
+        cout << "No requests to revert." << endl;
+        return;
+    }
     Requests request = approvedRequestsHistory.top();
-    approvedRequestsHistory.pop();
-        switch (request.choice) {
-                case 1:
-                    request.choice = 2;
-                    request.data.push_back(request.data[0]);
-                    request.data.push_back(request.data[1]);
-                    add_request(request);
-                    break;
+    Requests request1(0);
+    switch (request.choice) {
+        case 1:
+            request1.choice = 2;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
 
-                case 2:
-                    request.choice = 1;
-                    request.data.push_back(request.data[0]);
-                    request.data.push_back(request.data[1]);
-                    add_request(request);
-                    break;
+        case 2:
+            request1.choice = 1;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
 
-                case 3:
-                    request.choice = request.choice;
-                    request.data.push_back(request.data[0]);
-                    request.data.push_back(request.data[1]);
-                    request.data.push_back(request.data[2]);
-                    request.data.push_back(request.data[3]);
-                    add_request(request);
-                    break;
+        case 3:
+            request1.choice = request.choice;
+            request1.data.push_back(request.data[0]);
+            request1.data.push_back(request.data[1]);
+            request1.data.push_back(request.data[2]);
+            request1.data.push_back(request.data[3]);
+            approvedRequestsHistory.pop();
+            add_request(request1);
+            cout << "Your reverse request has been registered!" << endl;
+            break;
 
-                default:
-                    cout << "Error in the reversing process" << endl;
-                    break;
-            }
-
-        }
+        default:
+            cout << "Error in the reversing process" << endl;
+            break;
+    }
+}
 
 void Parse_Files::update_students(const Student& student) {
     auto it = Students.begin();
