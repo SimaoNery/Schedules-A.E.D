@@ -113,7 +113,6 @@ void Parse_Files::Parse_Students() {
         first = 1;//To inform that we have looped at least once
     }
     Students.insert(atual);
-    //cout << "Students size: " << Students.size() << endl;-->Testing
 }
 
 
@@ -205,7 +204,7 @@ void Parse_Files::Process_Request() {
                     cout << "Error on cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << endl;
                     break;
                 }default:
-                cout << "The request of cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << " was approved!" << endl;
+                cout << "Student " << analyzedRequest.data[0] << " is no longer in U.C " << analyzedRequest.data[1] << endl;
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
 
