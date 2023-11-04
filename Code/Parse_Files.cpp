@@ -75,7 +75,10 @@ void Parse_Files::Parse_Students() {
         fname = "../Information/output.csv";
     }
     ifstream file(fname);
-
+    
+    if(!file.is_open()){ //Check if we can open the file
+        cout << "Impossible to open the file!" << endl;
+    }
     getline(file, line); //Ignore the first line
 
     int first = 0;//Will be used to check if we are looping for the first time
