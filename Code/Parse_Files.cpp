@@ -91,49 +91,7 @@ void Parse_Files::Parse_Students() {
 
             if(first != 0) {//If we are looping for the first time we need to change the "atual" so that is represents a student correctly, so we jump the insert
 
-                Students.insert(atual);//Insert the student being treated so that we cvoid Parse_Files::Revert_Request() {
-    if (approvedRequestsHistory.empty()) {
-        cout << "No requests to revert." << endl;
-        return;
-    }
-    Requests request = approvedRequestsHistory.top();
-    Requests request1(0);
-    switch (request.choice) {
-        case 1:
-            request1.choice = 2;
-            request1.data.push_back(request.data[0]);
-            request1.data.push_back(request.data[1]);
-            approvedRequestsHistory.pop();
-            add_request(request1);
-            cout << "Your reverse request has been registered!" << endl;
-            break;
-
-        case 2:
-            request1.choice = 1;
-            request1.data.push_back(request.data[0]);
-            request1.data.push_back(request.data[1]);
-            approvedRequestsHistory.pop();
-            add_request(request1);
-            cout << "Your reverse request has been registered!" << endl;
-            break;
-
-        case 3:
-            request1.choice = request.choice;
-            request1.data.push_back(request.data[0]);
-            request1.data.push_back(request.data[1]);
-            request1.data.push_back(request.data[2]);
-            request1.data.push_back(request.data[3]);
-            approvedRequestsHistory.pop();
-            add_request(request1);
-            cout << "Your reverse request has been registered!" << endl;
-            break;
-
-        default:
-            cout << "Error in the reversing process" << endl;
-            break;
-    }
-}
-an treat a new one(since once a student changes, it won't appear again)
+                Students.insert(atual);//Insert the student being treated so that we can treat a new one(since once a student changes, it won't appear again)
 
             }
             atual = Student(Scode, Sname);
@@ -226,7 +184,6 @@ void Parse_Files::Check_Request() {
     }
 }
 
-
 void Parse_Files::Process_Request() {
     string classCode;
     while(!analyzedRequests.empty()) {
@@ -247,7 +204,7 @@ void Parse_Files::Process_Request() {
                 if(find_student_UC(analyzedRequest.data[0], analyzedRequest.data[1])) {
                     cout << "Error on cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << endl;
                     break;
-                }
+                }default:
                 cout << "The request of cancellation of the registration of student " << analyzedRequest.data[0] << " in U.C " << analyzedRequest.data[1] << " was approved!" << endl;
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
@@ -265,7 +222,6 @@ void Parse_Files::Process_Request() {
         }
         analyzedRequests.pop();
     }
-    print_changes_history();
 }
 
 void Parse_Files::Revert_Request() {
@@ -315,7 +271,7 @@ void Parse_Files::update_students(const Student& student) {
     auto it = Students.begin();
     while(it != Students.end()) {
         if(it->get_studentCode() == student.get_studentCode()) {
-            it = Students.erase(it);
+            Students.erase(it);
             Students.insert(student);
             break;
         }else {
@@ -411,9 +367,11 @@ int Parse_Files::get_number_student_class(const string &ucCode, const string &cl
 
 string Parse_Files::get_class_student(const string &studentCode, const string &ucCode) {
     for(const Student& student : Students) {
-        for(const Uc_class& uc : student.get_studentSchedule()) {
-            if(uc.get_ucCode() == ucCode) {
-                return uc.get_classCode();
+        if(student.get_studentCode() == studentCode) {
+            for(const Uc_class& uc : student.get_studentSchedule()) {
+                if(uc.get_ucCode() == ucCode) {
+                    return uc.get_classCode();
+                }
             }
         }
     }
@@ -493,8 +451,15 @@ void Parse_Files::add_student_UC(const string &studentCode, const string &ucCode
     }
     for(Student student : Students) {
         if(student.get_studentCode() == studentCode) {
-            student.update_studentSchedule(uc);
+            auto turmas = student.get_studentSchedule();
+            list<Uc_class> novoSchedule;
+            for(const auto& turma : turmas) {
+                novoSchedule.push_back(turma);
+            }
+            novoSchedule.push_back(uc);
+            student.set_studentSchedule(novoSchedule);
             update_students(student);
+            break;
         }
     }
 }
@@ -504,7 +469,7 @@ void Parse_Files::remove_student_UC(const string &studentCode, const string &ucC
         if(student.get_studentCode() == studentCode) {
             auto turmas = student.get_studentSchedule();
             list<Uc_class> novoSchedule;
-            for(auto turma : turmas) {
+            for(const auto& turma : turmas) {
                 if(turma.get_ucCode() != ucCode){
                     novoSchedule.push_back(turma);
                 }
@@ -544,22 +509,5 @@ void Parse_Files::print_students() {
         for(const Uc_class& ucs : student.get_studentSchedule()) {
             file << student.get_studentCode() << "," << student.get_studentName() << "," << ucs.get_ucCode() << "," << ucs.get_classCode() << endl;
         }
-    }
-}
-
-void Parse_Files::print_changes_history() {
-    ofstream file ("../Information/changes_history.csv");
-    if(!file.is_open()) {
-        cout << "Impossible to open the file!" << endl;
-    }
-    file << "Choice,ID,ChangesData" << endl;
-    while(!approvedRequestsHistory.empty()) {
-        Requests info = approvedRequestsHistory.top();
-        file << info.choice << "," << info.choice << ",";
-        for(auto &d : info.data) {
-            file << d << " ";
-        }
-        file << endl;
-        approvedRequestsHistory.pop();
     }
 }
