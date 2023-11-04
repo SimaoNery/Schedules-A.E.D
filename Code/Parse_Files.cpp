@@ -219,7 +219,20 @@ void Parse_Files::Process_Request() {
                 approvedRequestsHistory.push(analyzedRequest);
                 break;
 
+        }void Parse_Files::print_changes_history() {
+    ofstream file ("../Information/changes_history.csv");
+    if(!file.is_open()) {
+        cout << "Impossible to open the file!" << endl;
+    }
+    file << "Choice,ID,ChangesData" << endl;
+    for(const Requests& info : approvedRequestsHistory) {
+        file << info.choice << "," << info.choice << ",";
+        for(auto &d : info.data) {
+            file << d << " ";
         }
+        file << endl;
+    }
+}
         analyzedRequests.pop();
     }
 }
@@ -509,5 +522,20 @@ void Parse_Files::print_students() {
         for(const Uc_class& ucs : student.get_studentSchedule()) {
             file << student.get_studentCode() << "," << student.get_studentName() << "," << ucs.get_ucCode() << "," << ucs.get_classCode() << endl;
         }
+    }
+}
+
+void Parse_Files::print_changes_history() {
+    ofstream file ("../Information/changes_history.csv");
+    if(!file.is_open()) {
+        cout << "Impossible to open the file!" << endl;
+    }
+    file << "Choice,ID,ChangesData" << endl;
+    for(const Requests& info : approvedRequestsHistory) {
+        file << info.choice << "," << info.choice << ",";
+        for(auto &d : info.data) {
+            file << d << " ";
+        }
+        file << endl;
     }
 }
