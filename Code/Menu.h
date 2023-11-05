@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-
+///where everything happens, what user sees
 class Menu {
     public:
         ///will initialize the menu

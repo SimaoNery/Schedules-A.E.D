@@ -1,0 +1,38 @@
+\doxysection{Class.\+h}
+\hypertarget{_class_8h_source}{}\label{_class_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UNTITLED\_CLASS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UNTITLED\_CLASS\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_class}{Class}}\{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ weekday;}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type;}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ startHour;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ duration;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_class}{Class}}(\textcolor{keywordtype}{string}\ weekday,\ \textcolor{keywordtype}{string}\ type,\ \textcolor{keywordtype}{double}\ startHour,\ \textcolor{keywordtype}{double}\ duration);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_class_afa84578666f625e3cf42d5961d8cf263}{get\_weekday}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_class_a47186463663cf5e3173ac1314cf57283}{get\_startHour}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_class_ad340efb3a0f5c02080fa073bced37cfd}{get\_duration}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_class_a1e447e83ae674f97ea7c83b8d1e41b73}{get\_type}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_aa7ad75112be5625aa5de5c63a15d6ac1}{conflict}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ c2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_a2b0664a0837357015f1e0209dffa728a}{operator\ ==\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ other)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}(this-\/>weekday\ ==\ other.weekday\ \&\&\ this-\/>startHour\ ==\ other.startHour\ \&\&\ this-\/>duration\ ==\ other.duration\ \&\&\ this-\/>type\ ==\ other.type);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_class_a9783e7432037eedebfa69eac150484b0}{operator\ <\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ other)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}(this-\/>startHour\ <\ other.\mbox{\hyperlink{class_class_a47186463663cf5e3173ac1314cf57283}{get\_startHour}}());}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{class_class_ac2c298670cb69b7df96d5dd00a51eece}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\&\ c)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}(W:\ "{}}\ <<\ c.\mbox{\hyperlink{class_class_afa84578666f625e3cf42d5961d8cf263}{get\_weekday}}()\ <<\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Type:\ "{}}\ <<\ c.\mbox{\hyperlink{class_class_a1e447e83ae674f97ea7c83b8d1e41b73}{get\_type}}()\ <<\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Start\ Hour:\ "{}}\ <<\ c.\mbox{\hyperlink{class_class_a47186463663cf5e3173ac1314cf57283}{get\_startHour}}()\ <<\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Duration:\ "{}}\ <<\ c.\mbox{\hyperlink{class_class_ad340efb3a0f5c02080fa073bced37cfd}{get\_duration}}()\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//UNTITLED\_CLASS\_H}}
+
+\end{DoxyCode}

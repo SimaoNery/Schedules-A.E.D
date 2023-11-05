@@ -4,7 +4,7 @@
 #include <list>
 #include "Class.h"
 using namespace std;
-
+///information about every class("turma")
 class Uc_class {
 private:
     ///uc of a Uc_class

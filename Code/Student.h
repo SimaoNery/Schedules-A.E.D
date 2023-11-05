@@ -4,7 +4,7 @@
 #include <vector>
 #include "Uc_class.h"
 using namespace std;
-
+///information about students
 class Student {
     private:
         ///up code of the student

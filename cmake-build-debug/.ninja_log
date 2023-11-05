@@ -65,3 +65,10 @@
 814	903	1699187324881087608	Schedules	4c360f6962f7ee9c
 1	691	1699187845747457611	CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o	c9bcb87c38e1dbde
 691	768	1699187845823463630	Schedules	4c360f6962f7ee9c
+1	210	1699189757577641294	CMakeFiles/Schedules.dir/Code/Class.cpp.o	9529d7fe720d6d52
+1	262	1699189757629641753	CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o	1fc841f97c136bc8
+1	273	1699189757641641857	CMakeFiles/Schedules.dir/main.cpp.o	89e07af8902cd3cc
+1	322	1699189757689642281	CMakeFiles/Schedules.dir/Code/Student.cpp.o	cdfecdf4cfd2f7f1
+2	655	1699189758021645207	CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o	c9bcb87c38e1dbde
+2	835	1699189758201646794	CMakeFiles/Schedules.dir/Code/Menu.cpp.o	22476635e1e0c21c
+835	908	1699189758273647429	Schedules	4c360f6962f7ee9c

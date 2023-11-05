@@ -1,0 +1,66 @@
+\doxysection{Parse\+\_\+\+Files.\+h}
+\hypertarget{_parse___files_8h_source}{}\label{_parse___files_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCHEDULES\_PARSE\_FILES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCHEDULES\_PARSE\_FILES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Class.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Uc\_class.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Student.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_requests}{Requests}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ choice;}
+\DoxyCodeLine{00016\ \ \ \ \ vector<string>\ data;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{struct_requests_a506ce2624b1f3c759f469a2cdcb7fe74}{Requests}}(\textcolor{keywordtype}{int}\ choice)\ :\ choice(choice)\ \{\}}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sort_student_names}{SortStudentNames}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator()\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\&\ student1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\&\ student2)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ student1.\mbox{\hyperlink{class_student_a86b31623abb0661e248c9865757abc3d}{get\_studentName}}()\ <\ student2.\mbox{\hyperlink{class_student_a86b31623abb0661e248c9865757abc3d}{get\_studentName}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_parse___files}{Parse\_Files}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ vector<Uc\_class>\ Uc\_classes;}
+\DoxyCodeLine{00035\ \ \ \ \ set<Student>\ Students;}
+\DoxyCodeLine{00037\ \ \ \ \ queue<Requests>\ requests;}
+\DoxyCodeLine{00039\ \ \ \ \ queue<Requests>\ analyzedRequests;}
+\DoxyCodeLine{00041\ \ \ \ \ stack<Requests>\ approvedRequestsHistory;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_a1fa37cd3a3c3e5da6ac4d1bde20393b7}{Parse\_Classes}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_ad4344b2689d12b82b2124291453ba99c}{Parse\_Students}}();}
+\DoxyCodeLine{00050\ \ \ \ \ vector<Uc\_class>\ \mbox{\hyperlink{class_parse___files_ab09075fb573ac6d0e4c3244e7c3c4573}{get\_Uc\_classes}}();}
+\DoxyCodeLine{00052\ \ \ \ \ set<Student>\ \mbox{\hyperlink{class_parse___files_a69c61b4da410fc1129e316d41cdd361b}{get\_Students}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_a92142cfd136d4f61a264e6f3911c990c}{add\_request}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_requests}{Requests}}\&\ request);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_af2cbccaf2b358a938e5767bb37e6c7ea}{Check\_Request}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_aa8140e6f988628fc7a17e04967e8755c}{Process\_Request}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_abaca7e8e49c3ece29523271080581b44}{Revert\_Request}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_a61d225684e39fc225054bcc4e9dceb8d}{update\_students}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\&\ student);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a7b1061173f753a0c5c91818878494d5f}{find\_UC}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a6b2f3c1a422e7ead5cdafda86e33e738}{find\_student}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode);}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_aba1643574342209ad9594e8fb1a07e4b}{find\_UC\_class}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_acee766a98493ba7f69478fca5a613406}{find\_student\_UC}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode);}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a6a22d9c82638b9bb8a0c8e07e3ce0d93}{find\_student\_class}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_parse___files_a80db1de18f7a7f8cd6ae82a09f456286}{find\_class\_free}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_parse___files_a4aae87361cc90aa32f6ee54b01dbd054}{get\_number\_student\_class}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&classCode);}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_parse___files_ab60084b1b852247234ce539ddb4853bf}{get\_class\_student}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a16f22f5476785533c3837a602e99201b}{check\_number\_UC\_student}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a39d4fd5ab91a993ab8cbeeb308a25f7a}{check\_UC\_class\_cap}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);\ \textcolor{comment}{//Used\ in\ add\ to\ search\ in\ all\ Uc\_classes}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_ae62105bdd5ab8e0cf98fd20f25e8c968}{check\_class\_cap}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);\ \textcolor{comment}{//Used\ in\ switch\ to\ search\ only\ the\ Uc\_class\ desired}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a83a53e32a63c2d403f182217c5b1c643}{check\_conflict\_schedule}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_a2e43c3ff2a0b3ba4357100f3b96f5e13}{check\_class\_balance\_switch}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classatual,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classpretend);}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_parse___files_aee919186bb4cfd036c38c3ae435d5234}{check\_class\_balance}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_af754c6184a51da392d11fcd44075b912}{add\_student\_UC}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_aedddb598dd00293e2db8abb4ca62069f}{remove\_student\_UC}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode);}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_af44de04f3bdf1ea042080843cfb0664c}{switch\_student\_class}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ studentCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ucCode,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ classCode);}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_parse___files_a6b52e02ca875dfa2c3e4eef4d4d6d2cb}{print\_students}}();}
+\DoxyCodeLine{00179\ \};}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//SCHEDULES\_PARSE\_FILES\_H}}
+
+\end{DoxyCode}

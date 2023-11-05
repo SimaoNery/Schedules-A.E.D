@@ -1,0 +1,420 @@
+\doxysection{Parse\+\_\+\+Files Class Reference}
+\hypertarget{class_parse___files}{}\label{class_parse___files}\index{Parse\_Files@{Parse\_Files}}
+
+
+will parse the given files and have functions to allow us to change those files  
+
+
+
+
+{\ttfamily \#include $<$Parse\+\_\+\+Files.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_parse___files_a1fa37cd3a3c3e5da6ac4d1bde20393b7}{Parse\+\_\+\+Classes}} ()
+\item 
+void \mbox{\hyperlink{class_parse___files_ad4344b2689d12b82b2124291453ba99c}{Parse\+\_\+\+Students}} ()
+\item 
+vector$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$ \mbox{\hyperlink{class_parse___files_ab09075fb573ac6d0e4c3244e7c3c4573}{get\+\_\+\+Uc\+\_\+classes}} ()
+\item 
+set$<$ \mbox{\hyperlink{class_student}{Student}} $>$ \mbox{\hyperlink{class_parse___files_a69c61b4da410fc1129e316d41cdd361b}{get\+\_\+\+Students}} ()
+\item 
+void \mbox{\hyperlink{class_parse___files_a92142cfd136d4f61a264e6f3911c990c}{add\+\_\+request}} (const \mbox{\hyperlink{struct_requests}{Requests}} \&request)
+\item 
+void \mbox{\hyperlink{class_parse___files_af2cbccaf2b358a938e5767bb37e6c7ea}{Check\+\_\+\+Request}} ()
+\item 
+void \mbox{\hyperlink{class_parse___files_aa8140e6f988628fc7a17e04967e8755c}{Process\+\_\+\+Request}} ()
+\item 
+void \mbox{\hyperlink{class_parse___files_abaca7e8e49c3ece29523271080581b44}{Revert\+\_\+\+Request}} ()
+\item 
+void \mbox{\hyperlink{class_parse___files_a61d225684e39fc225054bcc4e9dceb8d}{update\+\_\+students}} (const \mbox{\hyperlink{class_student}{Student}} \&student)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a7b1061173f753a0c5c91818878494d5f}{find\+\_\+\+UC}} (const string \&uc\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a6b2f3c1a422e7ead5cdafda86e33e738}{find\+\_\+student}} (const string \&student\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_aba1643574342209ad9594e8fb1a07e4b}{find\+\_\+\+UC\+\_\+class}} (const string \&uc\+Code, const string \&class\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_acee766a98493ba7f69478fca5a613406}{find\+\_\+student\+\_\+\+UC}} (const string \&student\+Code, const string \&uc\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a6a22d9c82638b9bb8a0c8e07e3ce0d93}{find\+\_\+student\+\_\+class}} (const string \&student\+Code, const string \&uc\+Code, const string \&class\+Code)
+\item 
+string \mbox{\hyperlink{class_parse___files_a80db1de18f7a7f8cd6ae82a09f456286}{find\+\_\+class\+\_\+free}} (const string \&student\+Code, const string \&uc\+Code)
+\item 
+int \mbox{\hyperlink{class_parse___files_a4aae87361cc90aa32f6ee54b01dbd054}{get\+\_\+number\+\_\+student\+\_\+class}} (const string \&uc\+Code, const string \&class\+Code)
+\item 
+string \mbox{\hyperlink{class_parse___files_ab60084b1b852247234ce539ddb4853bf}{get\+\_\+class\+\_\+student}} (const string \&student\+Code, const string \&uc\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a16f22f5476785533c3837a602e99201b}{check\+\_\+number\+\_\+\+UC\+\_\+student}} (const string \&student\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a39d4fd5ab91a993ab8cbeeb308a25f7a}{check\+\_\+\+UC\+\_\+class\+\_\+cap}} (const string \&uc\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_ae62105bdd5ab8e0cf98fd20f25e8c968}{check\+\_\+class\+\_\+cap}} (const string \&uc\+Code, const string \&class\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a83a53e32a63c2d403f182217c5b1c643}{check\+\_\+conflict\+\_\+schedule}} (const string \&student\+Code, const string \&uc\+Code, const string \&class\+Code)
+\item 
+bool \mbox{\hyperlink{class_parse___files_a2e43c3ff2a0b3ba4357100f3b96f5e13}{check\+\_\+class\+\_\+balance\+\_\+switch}} (const string \&uc\+Code, const string \&classatual, const string \&classpretend)
+\item 
+bool \mbox{\hyperlink{class_parse___files_aee919186bb4cfd036c38c3ae435d5234}{check\+\_\+class\+\_\+balance}} (const string \&uc\+Code, const string \&class\+Code)
+\item 
+void \mbox{\hyperlink{class_parse___files_af754c6184a51da392d11fcd44075b912}{add\+\_\+student\+\_\+\+UC}} (const string \&student\+Code, const string \&uc\+Code)
+\item 
+void \mbox{\hyperlink{class_parse___files_aedddb598dd00293e2db8abb4ca62069f}{remove\+\_\+student\+\_\+\+UC}} (const string \&student\+Code, const string \&uc\+Code)
+\item 
+void \mbox{\hyperlink{class_parse___files_af44de04f3bdf1ea042080843cfb0664c}{switch\+\_\+student\+\_\+class}} (const string \&student\+Code, const string \&uc\+Code, const string \&class\+Code)
+\item 
+void \mbox{\hyperlink{class_parse___files_a6b52e02ca875dfa2c3e4eef4d4d6d2cb}{print\+\_\+students}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+will parse the given files and have functions to allow us to change those files 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_parse___files_a92142cfd136d4f61a264e6f3911c990c}\label{class_parse___files_a92142cfd136d4f61a264e6f3911c990c} 
+\index{Parse\_Files@{Parse\_Files}!add\_request@{add\_request}}
+\index{add\_request@{add\_request}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{add\_request()}{add\_request()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::add\+\_\+request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_requests}{Requests}} \&}]{request }\end{DoxyParamCaption})}
+
+Adds a new request to the request queue 
+\begin{DoxyParams}{Parameters}
+{\em request} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_parse___files_af754c6184a51da392d11fcd44075b912}\label{class_parse___files_af754c6184a51da392d11fcd44075b912} 
+\index{Parse\_Files@{Parse\_Files}!add\_student\_UC@{add\_student\_UC}}
+\index{add\_student\_UC@{add\_student\_UC}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{add\_student\_UC()}{add\_student\_UC()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::add\+\_\+student\+\_\+\+UC (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+Adds a new \doxylink{class_uc__class}{Uc\+\_\+class} to the student schedule O(n\texorpdfstring{$^\wedge$}{\string^}3) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_parse___files_aee919186bb4cfd036c38c3ae435d5234}\label{class_parse___files_aee919186bb4cfd036c38c3ae435d5234} 
+\index{Parse\_Files@{Parse\_Files}!check\_class\_balance@{check\_class\_balance}}
+\index{check\_class\_balance@{check\_class\_balance}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_class\_balance()}{check\_class\_balance()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+class\+\_\+balance (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}3) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the Uc\+\_\+classes are balanced 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a2e43c3ff2a0b3ba4357100f3b96f5e13}\label{class_parse___files_a2e43c3ff2a0b3ba4357100f3b96f5e13} 
+\index{Parse\_Files@{Parse\_Files}!check\_class\_balance\_switch@{check\_class\_balance\_switch}}
+\index{check\_class\_balance\_switch@{check\_class\_balance\_switch}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_class\_balance\_switch()}{check\_class\_balance\_switch()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+class\+\_\+balance\+\_\+switch (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{classatual,  }\item[{const string \&}]{classpretend }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}3) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the Uc\+\_\+classes are balanced(used only in switch) 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_ae62105bdd5ab8e0cf98fd20f25e8c968}\label{class_parse___files_ae62105bdd5ab8e0cf98fd20f25e8c968} 
+\index{Parse\_Files@{Parse\_Files}!check\_class\_cap@{check\_class\_cap}}
+\index{check\_class\_cap@{check\_class\_cap}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_class\_cap()}{check\_class\_cap()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+class\+\_\+cap (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the capacity of a \doxylink{class_uc__class}{Uc\+\_\+class} isn\textquotesingle{}t reached 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a83a53e32a63c2d403f182217c5b1c643}\label{class_parse___files_a83a53e32a63c2d403f182217c5b1c643} 
+\index{Parse\_Files@{Parse\_Files}!check\_conflict\_schedule@{check\_conflict\_schedule}}
+\index{check\_conflict\_schedule@{check\_conflict\_schedule}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_conflict\_schedule()}{check\_conflict\_schedule()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+conflict\+\_\+schedule (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}5) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are conflict between the student schedule and a given \doxylink{class_uc__class}{Uc\+\_\+class} 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a16f22f5476785533c3837a602e99201b}\label{class_parse___files_a16f22f5476785533c3837a602e99201b} 
+\index{Parse\_Files@{Parse\_Files}!check\_number\_UC\_student@{check\_number\_UC\_student}}
+\index{check\_number\_UC\_student@{check\_number\_UC\_student}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_number\_UC\_student()}{check\_number\_UC\_student()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+number\+\_\+\+UC\+\_\+student (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code }\end{DoxyParamCaption})}
+
+O(n) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of UC\textquotesingle{}s in which the student is registered 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_af2cbccaf2b358a938e5767bb37e6c7ea}\label{class_parse___files_af2cbccaf2b358a938e5767bb37e6c7ea} 
+\index{Parse\_Files@{Parse\_Files}!Check\_Request@{Check\_Request}}
+\index{Check\_Request@{Check\_Request}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{Check\_Request()}{Check\_Request()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::\+Check\+\_\+\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks the approval of all the requests in queue O(n\texorpdfstring{$^\wedge$}{\string^}5) \Hypertarget{class_parse___files_a39d4fd5ab91a993ab8cbeeb308a25f7a}\label{class_parse___files_a39d4fd5ab91a993ab8cbeeb308a25f7a} 
+\index{Parse\_Files@{Parse\_Files}!check\_UC\_class\_cap@{check\_UC\_class\_cap}}
+\index{check\_UC\_class\_cap@{check\_UC\_class\_cap}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{check\_UC\_class\_cap()}{check\_UC\_class\_cap()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::check\+\_\+\+UC\+\_\+class\+\_\+cap (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+O(n) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the capacity of a UC isn\textquotesingle{}t reached(cap = 25) 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a80db1de18f7a7f8cd6ae82a09f456286}\label{class_parse___files_a80db1de18f7a7f8cd6ae82a09f456286} 
+\index{Parse\_Files@{Parse\_Files}!find\_class\_free@{find\_class\_free}}
+\index{find\_class\_free@{find\_class\_free}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_class\_free()}{find\_class\_free()}}
+{\footnotesize\ttfamily string Parse\+\_\+\+Files\+::find\+\_\+class\+\_\+free (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}6) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the class\+Code of the first class with a free spot in a given UC 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a6b2f3c1a422e7ead5cdafda86e33e738}\label{class_parse___files_a6b2f3c1a422e7ead5cdafda86e33e738} 
+\index{Parse\_Files@{Parse\_Files}!find\_student@{find\_student}}
+\index{find\_student@{find\_student}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_student()}{find\_student()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::find\+\_\+student (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code }\end{DoxyParamCaption})}
+
+O(n) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the students exists 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a6a22d9c82638b9bb8a0c8e07e3ce0d93}\label{class_parse___files_a6a22d9c82638b9bb8a0c8e07e3ce0d93} 
+\index{Parse\_Files@{Parse\_Files}!find\_student\_class@{find\_student\_class}}
+\index{find\_student\_class@{find\_student\_class}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_student\_class()}{find\_student\_class()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::find\+\_\+student\+\_\+class (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the student is in the \doxylink{class_uc__class}{Uc\+\_\+class} 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_acee766a98493ba7f69478fca5a613406}\label{class_parse___files_acee766a98493ba7f69478fca5a613406} 
+\index{Parse\_Files@{Parse\_Files}!find\_student\_UC@{find\_student\_UC}}
+\index{find\_student\_UC@{find\_student\_UC}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_student\_UC()}{find\_student\_UC()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::find\+\_\+student\+\_\+\+UC (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the student is in the UC 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a7b1061173f753a0c5c91818878494d5f}\label{class_parse___files_a7b1061173f753a0c5c91818878494d5f} 
+\index{Parse\_Files@{Parse\_Files}!find\_UC@{find\_UC}}
+\index{find\_UC@{find\_UC}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_UC()}{find\_UC()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::find\+\_\+\+UC (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+O(n) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the UC exists 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_aba1643574342209ad9594e8fb1a07e4b}\label{class_parse___files_aba1643574342209ad9594e8fb1a07e4b} 
+\index{Parse\_Files@{Parse\_Files}!find\_UC\_class@{find\_UC\_class}}
+\index{find\_UC\_class@{find\_UC\_class}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{find\_UC\_class()}{find\_UC\_class()}}
+{\footnotesize\ttfamily bool Parse\+\_\+\+Files\+::find\+\_\+\+UC\+\_\+class (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the \doxylink{class_uc__class}{Uc\+\_\+class} exists 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_ab60084b1b852247234ce539ddb4853bf}\label{class_parse___files_ab60084b1b852247234ce539ddb4853bf} 
+\index{Parse\_Files@{Parse\_Files}!get\_class\_student@{get\_class\_student}}
+\index{get\_class\_student@{get\_class\_student}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{get\_class\_student()}{get\_class\_student()}}
+{\footnotesize\ttfamily string Parse\+\_\+\+Files\+::get\+\_\+class\+\_\+student (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+(Is this well implemented student code is never used) 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a4aae87361cc90aa32f6ee54b01dbd054}\label{class_parse___files_a4aae87361cc90aa32f6ee54b01dbd054} 
+\index{Parse\_Files@{Parse\_Files}!get\_number\_student\_class@{get\_number\_student\_class}}
+\index{get\_number\_student\_class@{get\_number\_student\_class}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{get\_number\_student\_class()}{get\_number\_student\_class()}}
+{\footnotesize\ttfamily int Parse\+\_\+\+Files\+::get\+\_\+number\+\_\+student\+\_\+class (\begin{DoxyParamCaption}\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of students enrolled in a \doxylink{class_uc__class}{Uc\+\_\+class} 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a69c61b4da410fc1129e316d41cdd361b}\label{class_parse___files_a69c61b4da410fc1129e316d41cdd361b} 
+\index{Parse\_Files@{Parse\_Files}!get\_Students@{get\_Students}}
+\index{get\_Students@{get\_Students}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{get\_Students()}{get\_Students()}}
+{\footnotesize\ttfamily set$<$ \mbox{\hyperlink{class_student}{Student}} $>$ Parse\+\_\+\+Files\+::get\+\_\+\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Students 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_ab09075fb573ac6d0e4c3244e7c3c4573}\label{class_parse___files_ab09075fb573ac6d0e4c3244e7c3c4573} 
+\index{Parse\_Files@{Parse\_Files}!get\_Uc\_classes@{get\_Uc\_classes}}
+\index{get\_Uc\_classes@{get\_Uc\_classes}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{get\_Uc\_classes()}{get\_Uc\_classes()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$ Parse\+\_\+\+Files\+::get\+\_\+\+Uc\+\_\+classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Uc\+\_\+classes 
+\end{DoxyReturn}
+\Hypertarget{class_parse___files_a1fa37cd3a3c3e5da6ac4d1bde20393b7}\label{class_parse___files_a1fa37cd3a3c3e5da6ac4d1bde20393b7} 
+\index{Parse\_Files@{Parse\_Files}!Parse\_Classes@{Parse\_Classes}}
+\index{Parse\_Classes@{Parse\_Classes}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{Parse\_Classes()}{Parse\_Classes()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::\+Parse\+\_\+\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+reads the files and creates a vector with all classes O(n\texorpdfstring{$^\wedge$}{\string^}2) \Hypertarget{class_parse___files_ad4344b2689d12b82b2124291453ba99c}\label{class_parse___files_ad4344b2689d12b82b2124291453ba99c} 
+\index{Parse\_Files@{Parse\_Files}!Parse\_Students@{Parse\_Students}}
+\index{Parse\_Students@{Parse\_Students}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{Parse\_Students()}{Parse\_Students()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::\+Parse\+\_\+\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+reads the files and creates a set with all students O(n\texorpdfstring{$^\wedge$}{\string^}2) \Hypertarget{class_parse___files_a6b52e02ca875dfa2c3e4eef4d4d6d2cb}\label{class_parse___files_a6b52e02ca875dfa2c3e4eef4d4d6d2cb} 
+\index{Parse\_Files@{Parse\_Files}!print\_students@{print\_students}}
+\index{print\_students@{print\_students}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{print\_students()}{print\_students()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::print\+\_\+students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Outputs a new file with updated info O(n\texorpdfstring{$^\wedge$}{\string^}3) \Hypertarget{class_parse___files_aa8140e6f988628fc7a17e04967e8755c}\label{class_parse___files_aa8140e6f988628fc7a17e04967e8755c} 
+\index{Parse\_Files@{Parse\_Files}!Process\_Request@{Process\_Request}}
+\index{Process\_Request@{Process\_Request}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{Process\_Request()}{Process\_Request()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::\+Process\+\_\+\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Process and implements all the requests in queue O(n\texorpdfstring{$^\wedge$}{\string^}3) \Hypertarget{class_parse___files_aedddb598dd00293e2db8abb4ca62069f}\label{class_parse___files_aedddb598dd00293e2db8abb4ca62069f} 
+\index{Parse\_Files@{Parse\_Files}!remove\_student\_UC@{remove\_student\_UC}}
+\index{remove\_student\_UC@{remove\_student\_UC}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{remove\_student\_UC()}{remove\_student\_UC()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::remove\+\_\+student\+\_\+\+UC (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code }\end{DoxyParamCaption})}
+
+Removes a \doxylink{class_uc__class}{Uc\+\_\+class} from the student schedule O(n\texorpdfstring{$^\wedge$}{\string^}3) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_parse___files_abaca7e8e49c3ece29523271080581b44}\label{class_parse___files_abaca7e8e49c3ece29523271080581b44} 
+\index{Parse\_Files@{Parse\_Files}!Revert\_Request@{Revert\_Request}}
+\index{Revert\_Request@{Revert\_Request}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{Revert\_Request()}{Revert\_Request()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::\+Revert\+\_\+\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reverts the request asked O(n) 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_parse___files_af44de04f3bdf1ea042080843cfb0664c}\label{class_parse___files_af44de04f3bdf1ea042080843cfb0664c} 
+\index{Parse\_Files@{Parse\_Files}!switch\_student\_class@{switch\_student\_class}}
+\index{switch\_student\_class@{switch\_student\_class}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{switch\_student\_class()}{switch\_student\_class()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::switch\+\_\+student\+\_\+class (\begin{DoxyParamCaption}\item[{const string \&}]{student\+Code,  }\item[{const string \&}]{uc\+Code,  }\item[{const string \&}]{class\+Code }\end{DoxyParamCaption})}
+
+Switch the \doxylink{class_uc__class}{Uc\+\_\+class} that a student is in for another one in the same UC O(n\texorpdfstring{$^\wedge$}{\string^}3) 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em uc\+Code} & \\
+\hline
+{\em class\+Code} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_parse___files_a61d225684e39fc225054bcc4e9dceb8d}\label{class_parse___files_a61d225684e39fc225054bcc4e9dceb8d} 
+\index{Parse\_Files@{Parse\_Files}!update\_students@{update\_students}}
+\index{update\_students@{update\_students}!Parse\_Files@{Parse\_Files}}
+\doxysubsubsection{\texorpdfstring{update\_students()}{update\_students()}}
+{\footnotesize\ttfamily void Parse\+\_\+\+Files\+::update\+\_\+students (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{student }\end{DoxyParamCaption})}
+
+Updates the information of a student after a request O(n\texorpdfstring{$^\wedge$}{\string^}2) 
+\begin{DoxyParams}{Parameters}
+{\em student} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Parse\+\_\+\+Files.\+h\item 
+Parse\+\_\+\+Files.\+cpp\end{DoxyCompactItemize}

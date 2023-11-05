@@ -1,0 +1,96 @@
+\doxysection{Student Class Reference}
+\hypertarget{class_student}{}\label{class_student}\index{Student@{Student}}
+
+
+information about students  
+
+
+
+
+{\ttfamily \#include $<$Student.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_student_a5a4f6d1ac79376d948596d41c73b24fd}{Student}} (string student\+Code, string student\+Name)
+\item 
+void \mbox{\hyperlink{class_student_a80f204be323bccb050563976ba173ecd}{set\+\_\+student\+Schedule}} (list$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$ info)
+\item 
+\Hypertarget{class_student_aed59084f3d305ff86018e668b78e1a53}\label{class_student_aed59084f3d305ff86018e668b78e1a53} 
+void {\bfseries update\+\_\+student\+Schedule} (\mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} schedule)
+\begin{DoxyCompactList}\small\item\em sets the schedule of an already existing student \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_student_ae4b4fc6733883d16bf85670f11b3ad2b}{get\+\_\+student\+Code}} () const
+\item 
+string \mbox{\hyperlink{class_student_a86b31623abb0661e248c9865757abc3d}{get\+\_\+student\+Name}} () const
+\item 
+list$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$ \mbox{\hyperlink{class_student_aefa463150cdeaa39fea0dff6c0a6d470}{get\+\_\+student\+Schedule}} () const
+\item 
+\Hypertarget{class_student_a44b0dc0efbc95f687706f28363e897db}\label{class_student_a44b0dc0efbc95f687706f28363e897db} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{class_student}{Student}} \&other) const
+\begin{DoxyCompactList}\small\item\em override of the operator \textquotesingle{}\texorpdfstring{$<$}{<}\textquotesingle{} for class \doxylink{class_student}{Student} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+information about students 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_student_a5a4f6d1ac79376d948596d41c73b24fd}\label{class_student_a5a4f6d1ac79376d948596d41c73b24fd} 
+\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}}
+{\footnotesize\ttfamily Student\+::\+Student (\begin{DoxyParamCaption}\item[{string}]{student\+Code,  }\item[{string}]{student\+Name }\end{DoxyParamCaption})}
+
+constructor 
+\begin{DoxyParams}{Parameters}
+{\em student\+Code} & \\
+\hline
+{\em student\+Name} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_student_ae4b4fc6733883d16bf85670f11b3ad2b}\label{class_student_ae4b4fc6733883d16bf85670f11b3ad2b} 
+\index{Student@{Student}!get\_studentCode@{get\_studentCode}}
+\index{get\_studentCode@{get\_studentCode}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{get\_studentCode()}{get\_studentCode()}}
+{\footnotesize\ttfamily string Student\+::get\+\_\+student\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the student code 
+\end{DoxyReturn}
+\Hypertarget{class_student_a86b31623abb0661e248c9865757abc3d}\label{class_student_a86b31623abb0661e248c9865757abc3d} 
+\index{Student@{Student}!get\_studentName@{get\_studentName}}
+\index{get\_studentName@{get\_studentName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{get\_studentName()}{get\_studentName()}}
+{\footnotesize\ttfamily string Student\+::get\+\_\+student\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the student name 
+\end{DoxyReturn}
+\Hypertarget{class_student_aefa463150cdeaa39fea0dff6c0a6d470}\label{class_student_aefa463150cdeaa39fea0dff6c0a6d470} 
+\index{Student@{Student}!get\_studentSchedule@{get\_studentSchedule}}
+\index{get\_studentSchedule@{get\_studentSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{get\_studentSchedule()}{get\_studentSchedule()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$ Student\+::get\+\_\+student\+Schedule (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the schedule of a student 
+\end{DoxyReturn}
+\Hypertarget{class_student_a80f204be323bccb050563976ba173ecd}\label{class_student_a80f204be323bccb050563976ba173ecd} 
+\index{Student@{Student}!set\_studentSchedule@{set\_studentSchedule}}
+\index{set\_studentSchedule@{set\_studentSchedule}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{set\_studentSchedule()}{set\_studentSchedule()}}
+{\footnotesize\ttfamily void Student\+::set\+\_\+student\+Schedule (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{class_uc__class}{Uc\+\_\+class}} $>$}]{info }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Student.\+h\item 
+Student.\+cpp\end{DoxyCompactItemize}

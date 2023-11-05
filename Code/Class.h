@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+///Information about every class("aula")
 class Class{
     private:
     ///day of the week

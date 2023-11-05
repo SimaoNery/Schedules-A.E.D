@@ -26,6 +26,7 @@ struct SortStudentNames {
 };
 
 //--------------------------------------------------------------------------------------------------------------------//
+///will parse the given files and have functions to allow us to change those files
 class Parse_Files {
 private:
     ///all classes available and their classes

@@ -1,0 +1,40 @@
+\doxysection{Uc\+\_\+class.\+h}
+\hypertarget{_uc__class_8h_source}{}\label{_uc__class_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UNTITLED\_UC\_CLASS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UNTITLED\_UC\_CLASS\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Class.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_uc__class}{Uc\_class}}\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{string}\ ucCode;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{string}\ classCode;}
+\DoxyCodeLine{00015\ \ \ \ \ list<Class>\ schedule;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_uc__class_a77f1487cc1a939d5ba5cb8784331f0d9}{Uc\_class}}()=\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_uc__class_a77f1487cc1a939d5ba5cb8784331f0d9}{Uc\_class}}(\textcolor{keywordtype}{string}\ ucCode,\ \textcolor{keywordtype}{string}\ classCode,\ list<Class>\ schedule);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_uc__class_a67c38361358ddab85d9c98dd7c604ff8}{get\_ucCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_uc__class_af4f31735f5f696d05cd71f8a3a71585e}{get\_classCode}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ \ \ \ \ list<Class>\ \mbox{\hyperlink{class_uc__class_a3ccd45ae4fc4d2594bad97dd4c05565a}{get\_schedule}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_uc__class_a045eb973511a9a52ce7dd28952881c57}{set\_classCode}}(\textcolor{keywordtype}{string}\ classCode);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_uc__class_a1fd8e8ff24ce9eab026242557597dd10}{set\_ucCode}}(\textcolor{keywordtype}{string}\ ucCode);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_uc__class_a01040258e5346f04709b59b38d997dd2}{set\_schedule}}(list<Class>schedule);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_uc__class_a459f86784241a4ceaeea7e3dc42f52cc}{operator\ >\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_uc__class}{Uc\_class}}\&\ other)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (this-\/>ucCode\ >\ other.\mbox{\hyperlink{class_uc__class_a67c38361358ddab85d9c98dd7c604ff8}{get\_ucCode}}());}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{class_uc__class_a97527eee54ff6c7de3e446ab65d60371}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_uc__class}{Uc\_class}}\&\ uc)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Uc\_code:\ "{}}\ <<\ uc.\mbox{\hyperlink{class_uc__class_a67c38361358ddab85d9c98dd7c604ff8}{get\_ucCode}}()\ <<\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Class\_code:\ "{}}\ <<\ uc.\mbox{\hyperlink{class_uc__class_af4f31735f5f696d05cd71f8a3a71585e}{get\_classCode}}()\ <<\ \textcolor{stringliteral}{"{};\ "{}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Schedule:\ "{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_class}{Class}}\ \&c:\ uc.\mbox{\hyperlink{class_uc__class_a3ccd45ae4fc4d2594bad97dd4c05565a}{get\_schedule}}())\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ c\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//UNTITLED\_UC\_CLASS\_H}}
+
+\end{DoxyCode}
