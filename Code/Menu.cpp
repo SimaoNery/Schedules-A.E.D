@@ -284,7 +284,7 @@ void Menu::menu(){
 
                 default:
                     cout << "Invalid Operation! Please insert a valid input:" << endl;
-                    return;
+                    break;
             }
         }
 
@@ -406,7 +406,7 @@ void Menu::menu(){
 
                 default:
                     cout << "Invalid Operation! PLease Try Again" << endl;
-                    return;
+                    break;
             }
         }
 
