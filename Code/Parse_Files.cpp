@@ -74,7 +74,7 @@ void Parse_Files::Parse_Students() {
     else{
         fname = "../Information/output.csv";
     }
-    ifstream file(fname);
+    ifstream file(fname);if(uc.get_ucCode() != ucCode) {
     
     if(!file.is_open()){ //Check if we can open the file
         cout << "Impossible to open the file!" << endl;
@@ -152,7 +152,7 @@ void Parse_Files::Check_Request() {
                     cout << "The student " << request.data[0] << " has reached the max number of UC's" <<endl;
                     break;
                 }
-                if(!check_UC_class_cap(request.data[1])) {
+                if(!check_UC_class_cap(request.data[1])) {if(uc.get_ucCode() != ucCode) {
                     cout << "The student " << request.data[0] << " cannot enroll at UC " << request.data[1] << " because there are no vacancies" << endl;
                     break;
                 }
@@ -265,7 +265,7 @@ void Parse_Files::Revert_Request() {
             request1.data.push_back(request.data[3]);
             approvedRequestsHistory.pop();
             add_request(request1);
-            cout << "Your reverse request has been registered!" << endl;
+            cout << "Your reverse request has been registered!" << endl;if(uc.get_ucCode() != ucCode) {
             break;
 
         default:
@@ -421,10 +421,12 @@ bool Parse_Files::check_conflict_schedule(const string &studentCode, const strin
             for(const Student& student : Students) {
                 if(student.get_studentCode() == studentCode) {
                     for(const Uc_class& uc : student.get_studentSchedule()) {
-                        for(const Class &schedule : uc.get_schedule()) {
-                            for(const Class &clasSchedule : clas.get_schedule()) {
-                                if(schedule.conflict(clasSchedule) && schedule.get_type() != "T" && clasSchedule.get_type() != "T") {
-                                    return true;
+                        if(uc.get_ucCode() != ucCode) {
+                            for(const Class &schedule : uc.get_schedule()) {
+                                for(const Class &clasSchedule : clas.get_schedule()) {
+                                    if(schedule.conflict(clasSchedule) && schedule.get_type() != "T" && clasSchedule.get_type() != "T") {
+                                        return true;
+                                    }
                                 }
                             }
                         }
