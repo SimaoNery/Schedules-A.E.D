@@ -28,10 +28,13 @@ bool Class::conflict(const Class& c2) const {
         return false;
     }
     else{
-        if(this->startHour + this->duration > c2.get_startHour() || this->startHour == c2.get_startHour()){
-            return true;
+        if(this->startHour + this->duration <= c2.get_startHour() || this->startHour >= c2.get_startHour() + c2.get_duration()) {
+            return false;
         }
-        return false;
+        if(this->type == "T" || c2.get_type() == "T") {
+            return false;
+        }
+        return true;
     }
 }
 
