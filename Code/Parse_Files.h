@@ -142,9 +142,17 @@ public:
     /// \return true if there are conflict between the student schedule and a given Uc_class
     bool check_conflict_schedule(const string& studentCode, const string& ucCode, const string& classCode);
     ///
-    /// O(n^3)
+    ///
+    /// \param studentCode
     /// \param ucCode
     /// \param classCode
+    /// \return true if there are conflict between the student schedule and a given Uc_class
+    bool check_conflict_schedule_switch(const string &studentCode, const string &ucCode, const string &classCode);
+    ///
+    /// O(n^3)
+    /// \param ucCode
+    /// \param classatual
+    /// \param classpretend
     /// \return true if the Uc_classes are balanced(used only in switch)
     bool check_class_balance_switch(const string& ucCode, const string& classatual, const string& classpretend);
     ///
