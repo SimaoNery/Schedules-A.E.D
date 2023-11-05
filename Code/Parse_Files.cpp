@@ -131,6 +131,10 @@ void Parse_Files::add_request(const Requests& request) {
 void Parse_Files::Check_Request() {
     while(!requests.empty()) {
         Requests request = requests.front();
+        requests.pop();
+        if(request.choice == requests.front().choice && request.data == requests.front().data) {
+            requests.pop();
+        }
         switch(request.choice) {
             case 1:
                 if(!check_number_UC_student(request.data[0])) {
@@ -172,7 +176,6 @@ void Parse_Files::Check_Request() {
                 break;
 
         }
-        requests.pop();
     }
 }
 
