@@ -40,8 +40,8 @@ void Menu::menu(){
     string studentCode, ucCode, ucCodeDestiny, classCode, classCodeDestiny;
     Requests request(0); //Request object to store info to verify and process the request
 
-
     string choice1;
+    int checks = 0;
     while(true){
         cout << "|------------------------------------------------------------------------|" << endl;
         cout << "|             Information            |             Changes               |" << endl;
@@ -56,7 +56,9 @@ void Menu::menu(){
         cout << "|                                    | 6-> Revert Request                |" << endl;
         cout << "|                                    |                                   |" << endl;
         cout << "|                                    |                                   |" << endl;
-        cout << "|                                    |                                   |" << endl; // FAZER UMA CONTAGEM DAS MUDAÇAS ATUAIS POR REALIZAR
+        cout << "| Number of operations needing check = " << checks <<"                                 |" << endl;
+        cout << "|                                    |                                   |" << endl;
+        cout << "|                                    |                                   |" << endl;
         cout << "|                                    |                #Press Q to leave  |" << endl;
         cout << "|------------------------------------------------------------------------|" << endl;
         cout << "What type of operation do you want to do? (I or C)" << endl;
@@ -281,14 +283,13 @@ void Menu::menu(){
                     else{cout << "Day inserted doesn't exist!" << endl;break;}
 
                 default:
-                    cout << "Invalid Operation!" << endl;
-                    exit(0);
+                    cout << "Invalid Operation! Please insert a valid input:" << endl;
+                    return;
             }
         }
 
-        else if(choice1 == "C"){//Comentar
+        else if(choice1 == "C"){
             int choice2 = 0;
-            int id;
             cout << "What type of Changes you want to do? (1,2,3,4,5,6)" << endl;
             cin >> choice2;
 
@@ -315,6 +316,7 @@ void Menu::menu(){
                     request.data.push_back(ucCode);
                     aux.add_request(request); //store the data inserted by user on queue to check the validation of the requests
                     cout << "Your request has been registered!" << endl;
+                    checks++;
                     break;
                     //option is Change Inscription In A U.C.
                 case 2:
@@ -339,6 +341,7 @@ void Menu::menu(){
                     request.data.push_back(ucCode);
                     aux.add_request(request); //stores the data inserted by user on queue to check the validation of the requests
                     cout << "Your request has been registered!" << endl;
+                    checks++;
                     break;
                     //option is Change Class.
                 case 3:
@@ -381,11 +384,13 @@ void Menu::menu(){
                     request.data.push_back(classCodeDestiny);
                     aux.add_request(request); //stores the data inserted by user on queue to check the validation of the requests
                     cout << "Your request has been registered!" << endl;
+                    checks++;
                     break;
 
                 case 4:
                     cout << "Analyzing requests..." << endl;
                     aux.Check_Request();
+                    checks = 0;
                     break;
 
                 case 5:
@@ -401,7 +406,7 @@ void Menu::menu(){
 
                 default:
                     cout << "Invalid Operation! PLease Try Again" << endl;
-                    break;
+                    return;
             }
         }
 

@@ -69,23 +69,22 @@ void Parse_Files::Parse_Students() {
     ifstream test("../Information/output.csv");
     string fname, line;
     if(getline(test, line).eof()){
-        fname = "../Information/students_classes.csv";
+        fname = "../Information/students_classes.csv";//If there are previous alterations we read the file with those
     }
     else{
         fname = "../Information/output.csv";
     }
-    ifstream file(fname);if(uc.get_ucCode() != ucCode) {
-    
-    if(!file.is_open()){ //Check if we can open the file
+    ifstream file(fname); // Remove the extra curly braces here
+
+    if(!file.is_open()){ // Check if we can open the file
         cout << "Impossible to open the file!" << endl;
     }
-    getline(file, line); //Ignore the first line
+    getline(file, line); // Ignore the first line
 
-    int first = 0;//Will be used to check if we are looping for the first time
-    Student atual("","");//Student that is being treated
+    int first = 0; // Will be used to check if we are looping for the first time
+    Student atual("",""); // Student that is being treated
 
     while(getline(file, line)){
-
         istringstream iss(line);
 
         string Scode, Sname, Ucode, Ccode;
@@ -95,30 +94,25 @@ void Parse_Files::Parse_Students() {
         getline(iss, Ucode, ',');
         getline(iss, Ccode, '\r');
 
-        if(Scode != atual.get_studentCode()){//If the student changes we need to create a new one
-
-            if(first != 0) {//If we are looping for the first time we need to change the "atual" so that is represents a student correctly, so we jump the insert
-
-                Students.insert(atual);//Insert the student being treated so that we can treat a new one(since once a student changes, it won't appear again)
-
+        if(Scode != atual.get_studentCode()){
+            if(first != 0) {
+                Students.insert(atual);
             }
             atual = Student(Scode, Sname);
-            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end();itr++){
-                if(Ucode == itr->get_ucCode() && Ccode == itr->get_classCode()){
-
-                    atual.update_studentSchedule(*itr); //Iterate through Uc_classes so that we can create the student schedule
-
-                }
-            }
-        }
-        else{//Otherwise we just change the one already being treated
-            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end();itr++){
+            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end(); itr++){
                 if(Ucode == itr->get_ucCode() && Ccode == itr->get_classCode()){
                     atual.update_studentSchedule(*itr);
                 }
             }
         }
-        first = 1;//To inform that we have looped at least once
+        else{
+            for(auto itr = Uc_classes.begin(); itr != Uc_classes.end(); itr++){
+                if(Ucode == itr->get_ucCode() && Ccode == itr->get_classCode()){
+                    atual.update_studentSchedule(*itr);
+                }
+            }
+        }
+        first = 1;
     }
     Students.insert(atual);
 }
@@ -131,18 +125,9 @@ set<Student> Parse_Files::get_Students(){
     return Students;
 }
 
-void Parse_Files::set_Students(set<Student> &students) {
-    this->Students = students;
-}
-
-void Parse_Files::set_UC_Classes(vector<Uc_class> &clas) {
-    this->Uc_classes = clas;
-}
-
 void Parse_Files::add_request(const Requests& request) {
     this->requests.push(request);
 }
-
 void Parse_Files::Check_Request() {
     while(!requests.empty()) {
         Requests request = requests.front();
@@ -152,12 +137,12 @@ void Parse_Files::Check_Request() {
                     cout << "The student " << request.data[0] << " has reached the max number of UC's" <<endl;
                     break;
                 }
-                if(!check_UC_class_cap(request.data[1])) {if(uc.get_ucCode() != ucCode) {
+                if(!check_UC_class_cap(request.data[1])) {
                     cout << "The student " << request.data[0] << " cannot enroll at UC " << request.data[1] << " because there are no vacancies" << endl;
                     break;
                 }
                 if(find_class_free(request.data[0], request.data[1]).empty()) {
-                    cout << "The student " << request.data[0] << " cannot enroll at UC " << request.data[1] << " because there are no classes compatible with student schedule" << endl;
+                    cout << "The student " << request.data[0] << " cannot enroll at UC " << request.data[1] << endl;
                     break;
                 }
                 analyzedRequests.push(request);
@@ -261,11 +246,11 @@ void Parse_Files::Revert_Request() {
             request1.choice = request.choice;
             request1.data.push_back(request.data[0]);
             request1.data.push_back(request.data[1]);
-            request1.data.push_back(request.data[2]);
             request1.data.push_back(request.data[3]);
+            request1.data.push_back(request.data[2]);
             approvedRequestsHistory.pop();
             add_request(request1);
-            cout << "Your reverse request has been registered!" << endl;if(uc.get_ucCode() != ucCode) {
+            cout << "Your reverse request has been registered!" << endl;
             break;
 
         default:
@@ -414,7 +399,7 @@ bool Parse_Files::check_class_cap(const string &ucCode, const string &classCode)
     }
     return false;
 }
-
+//Complexity going crazy here
 bool Parse_Files::check_conflict_schedule(const string &studentCode, const string &ucCode, const string &classCode) {
     for(const Uc_class& clas : Uc_classes) {
         if(clas.get_ucCode() == ucCode && clas.get_classCode() == classCode) {
@@ -463,8 +448,8 @@ bool Parse_Files::check_class_balance(const string &ucCode, const string &classC
                 return false;
             }
         }
+        return true;
     }
-    return true;
 }
 
 void Parse_Files::add_student_UC(const string &studentCode, const string &ucCode) {

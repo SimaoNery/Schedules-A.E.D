@@ -79,12 +79,6 @@ build CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o: CXX_COMPILER__Schedules_u
   OBJECT_DIR = CMakeFiles/Schedules.dir
   OBJECT_FILE_DIR = CMakeFiles/Schedules.dir/Code
 
-build CMakeFiles/Schedules.dir/Code/Request.cpp.o: CXX_COMPILER__Schedules_unscanned_Debug /home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules/Code/Request.cpp || cmake_object_order_depends_target_Schedules
-  DEP_FILE = CMakeFiles/Schedules.dir/Code/Request.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/Schedules.dir
-  OBJECT_FILE_DIR = CMakeFiles/Schedules.dir/Code
-
 build CMakeFiles/Schedules.dir/Code/Menu.cpp.o: CXX_COMPILER__Schedules_unscanned_Debug /home/simaonery/Desktop/2Ano/A.E.D/Projeto1/Schedule/Schedules/Code/Menu.cpp || cmake_object_order_depends_target_Schedules
   DEP_FILE = CMakeFiles/Schedules.dir/Code/Menu.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
@@ -99,7 +93,7 @@ build CMakeFiles/Schedules.dir/Code/Menu.cpp.o: CXX_COMPILER__Schedules_unscanne
 #############################################
 # Link the executable Schedules
 
-build Schedules: CXX_EXECUTABLE_LINKER__Schedules_Debug CMakeFiles/Schedules.dir/main.cpp.o CMakeFiles/Schedules.dir/Code/Class.cpp.o CMakeFiles/Schedules.dir/Code/Student.cpp.o CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o CMakeFiles/Schedules.dir/Code/Request.cpp.o CMakeFiles/Schedules.dir/Code/Menu.cpp.o
+build Schedules: CXX_EXECUTABLE_LINKER__Schedules_Debug CMakeFiles/Schedules.dir/main.cpp.o CMakeFiles/Schedules.dir/Code/Class.cpp.o CMakeFiles/Schedules.dir/Code/Student.cpp.o CMakeFiles/Schedules.dir/Code/Uc_class.cpp.o CMakeFiles/Schedules.dir/Code/Parse_Files.cpp.o CMakeFiles/Schedules.dir/Code/Menu.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Schedules.dir
   POST_BUILD = :

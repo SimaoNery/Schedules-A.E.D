@@ -50,140 +50,130 @@ public:
     /// \return Students
     set<Student> get_Students();
     ///
-    /// \param students
-    void set_Students(set<Student>& students);
-    ///
-    /// \param clas
-    void set_UC_Classes(vector<Uc_class>& clas);
-    ///
     /// Adds a new request to the request queue
     /// \param request
     void add_request(const Requests& request);
     ///
-    ///Checks the approval of the requests in queue
-    ///complexidade
+    ///Checks the approval of all the requests in queue
+    ///O(n^5)
     void Check_Request();
     ///
     ///Process and implements all the requests in queue
-    ///complexidade
+    ///O(n^3)
     void Process_Request();
     ///
     ///Reverts the request asked
-    ///complexidade
+    ///O(n)
     /// \param id
     void Revert_Request();
     ///
     ///Updates the information of a student after a request
-    ///complexidade
+    ///O(n^2)
     /// \param student
     void update_students(const Student& student);
     ///
-    ///complexidade
+    ///O(n)
     /// \param ucCode
     /// \return true if the UC exists
     bool find_UC(const string& ucCode);
     ///
-    ///complexidade
+    ///O(n)
     /// \param studentCode
     /// \return true if the students exists
     bool find_student(const string& studentCode);
     ///
-    /// complexidade
+    /// O(n)
     /// \param ucCode
     /// \param classCode
     /// \return true if the Uc_class exists
     bool find_UC_class(const string& ucCode, const string& classCode);
     ///
-    /// complexidade
+    /// O(n^2)
     /// \param studentCode
     /// \param ucCode
     /// \return true if the student is in the UC
     bool find_student_UC(const string &studentCode, const string &ucCode);
     ///
-    /// complexidade
+    /// O(n^2)
     /// \param studentCode
     /// \param ucCode
     /// \param classCode
     /// \return true if the student is in the Uc_class
     bool find_student_class(const string& studentCode, const string& ucCode, const string& classCode);
     ///
-    /// complexidade
+    /// O(n^6)
     /// \param ucCode
     /// \return the classCode of the first class with a free spot in a given UC
     string find_class_free(const string& studentCode, const string& ucCode);
     ///
-    ///  complexidade
+    ///  O(n^2)
     /// \param ucCode
     /// \param classCode
     /// \return the number of students enrolled in a Uc_class
     int get_number_student_class(const string &ucCode, const string &classCode);
     ///
-    /// complexidade
+    /// O(n^2)
     /// \param studentCode
     /// \param ucCode
     /// \return (Is this well implemented student code is never used)
     string get_class_student(const string& studentCode, const string& ucCode);
     ///
-    /// complexidade
+    /// O(n)
     /// \param studentCode
     /// \return the number of UC's in which the student is registered
     bool check_number_UC_student(const string& studentCode);
     ///
-    /// complexidade
+    /// O(n)
     /// \param ucCode
     /// \return true if the capacity of a UC isn't reached(cap = 25)
     bool check_UC_class_cap(const string& ucCode); //Used in add to search in all Uc_classes
     ///
-    /// complexidade
+    /// O(n^2)
     /// \param ucCode
     /// \param classCode
     /// \return true if the capacity of a Uc_class isn't reached
     bool check_class_cap(const string& ucCode, const string& classCode); //Used in switch to search only the Uc_class desired
     ///
-    /// complexidade
+    /// O(n^5)
     /// \param studentCode
     /// \param ucCode
     /// \param classCode
     /// \return true if there are conflict between the student schedule and a given Uc_class
     bool check_conflict_schedule(const string& studentCode, const string& ucCode, const string& classCode);
     ///
-    /// complexidade
+    /// O(n^3)
     /// \param ucCode
     /// \param classCode
     /// \return true if the Uc_classes are balanced(used only in switch)
     bool check_class_balance_switch(const string& ucCode, const string& classatual, const string& classpretend);
     ///
-    ///complexidade
+    ///O(n^3)
     /// \param ucCode
     /// \param classCode
     /// \return true if the Uc_classes are balanced
     bool check_class_balance(const string& ucCode, const string& classCode);
     ///
     ///Adds  a new Uc_class to the student schedule
-    ///complexidade
+    ///O(n^3)
     /// \param studentCode
     /// \param ucCode
     void add_student_UC(const string& studentCode, const string& ucCode);
     ///
     ///Removes a Uc_class from the student schedule
-    ///complexidade
+    ///O(n^3)
     /// \param studentCode
     /// \param ucCode
     void remove_student_UC(const string& studentCode, const string& ucCode);
     ///
     ///Switch the Uc_class that a student is in for another one in the same UC
-    ///complexidade
+    ///O(n^3)
     /// \param studentCode
     /// \param ucCode
     /// \param classCode
     void switch_student_class(const string& studentCode, const string& ucCode, const string& classCode);
     ///
     ///Outputs a new file with updated info
-    ///copmplexidade
+    ///O(n^3)
     void print_students();
-    ///
-    ///Outputs the changes log into a file
-    ///complexidade
-    void print_changes_history();
 };
 #endif //SCHEDULES_PARSE_FILES_H
